@@ -20,3 +20,4 @@ Some of these topics may go in a later section.  But I wanted to capture them so
       - Example that doesn't do as well *(can I find one?)*
   - Introduce *parfor* command
   - Categories Variable classification in parfor
+  - Random Number Generation in parfor
