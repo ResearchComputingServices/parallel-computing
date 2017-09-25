@@ -10,13 +10,18 @@ keypoints:
 - "First key point."
 ---
 
- - Code that can easily be parallelized with parfor
- - Code that cannot be parallelized with parfor
-     - Small (e.g. 9-cell) time-stepped iterative model.  Perhaps something like a heat equation?
-     - Euclidean Algorithm
-     - Fibonnaci Sequence
- - Code that can be parallelized with parfor, but with some changes
- - Example of RAM use in parfor (e.g. the slicing matrix example)?
+ * Code that can easily be parallelized with parfor
+ * Code that cannot be parallelized with parfor
+     * Small (e.g. 9-cell) time-stepped iterative model.  Perhaps something like a heat equation?
+     * Euclidean Algorithm
+     * Fibonnaci Sequence
+     * Iteratively Calculate PI
+ * Code that can be parallelized with parfor, but with some changes
+ * Example of RAM use in parfor (e.g. the slicing matrix example)?
+     * Might be good for RAM use:
+         * Inside loop: `B=A`
+         * Sequential: size(B)*2
+         * Parallel: size(B)*P
   
 From https://www.mathworks.com/help/distcomp/decide-when-to-use-parfor.html:
 

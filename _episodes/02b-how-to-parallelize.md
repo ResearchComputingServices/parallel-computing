@@ -10,6 +10,7 @@ keypoints:
 - "First key point."
 ---
 
+ - Correct first, fast after
  - Determine section(s) where code takes a long time
      - time sections of code (we'll show examples in Matlab, but all programming languages have a way to check elapsed time)
  - Fix input so results are reproducible
@@ -17,3 +18,4 @@ keypoints:
      - choose one input data set
      - fix seed for random numbers
  - If possible, break apart any dependencies in section(s), then convert code section to parallel
+ 
