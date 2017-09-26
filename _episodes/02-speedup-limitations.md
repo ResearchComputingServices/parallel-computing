@@ -78,7 +78,7 @@ Step 5 [1 second] Cleanup variables
 Let's say in this program that you are able to parallelize step 3.  How fast could this program possibly go?  Here's what happens as you increase the number of processor cores:
 
 
-*INSERT GRAPH SHOWING SPEEDUP AS P GETS LARGE*
+![Theoretical Speedup](../fig/speedup.svg)
 
 ## Measuring speedup
 

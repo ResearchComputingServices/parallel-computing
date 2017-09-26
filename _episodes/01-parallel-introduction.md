@@ -24,11 +24,11 @@ So, even when coming to the world's largest supercomputer, running your existing
 
 Parallel computing, even on a smaller scale, has become more popular over the last decade.  Before this time, the speed of CPUs was continually increasing.  The solution to a computer running to slowly was often to purchase a newer, faster computer.
 
-This continual increasing in computer performance is often termed Moore's Law:  the rule of thumb that every *x* number of years, computer performance would increase *y* times. However, this is no longer the case due to the thermal limits of CPU manufacturing.
+This continual increasing in computer performance is often termed Moore's Law.  Moore was a cofounder of Intel and starting in the 1960s predicted that the power of computer processors would been doubling every 2 years. This was indeed true for many decades.
 
-What CPU designers can do instead of increasing the speed of a CPU core, is to cram more cores into a physical CPU chip.  The laptop or desktop you are working on now probably has around 4 cores in it.  The servers we use in Carleton's Research and Development Cloud have up to 32 cores.  It is even possible to have a program span to multiple computers across a network in order to access even more cores at once.
+The increasing capability in computer processors drove ever faster processors.  However, even faster processors are is no longer feasible since manufacturers have come up against the physical limitations of CPU manufacturing.  Instead, chip manufacturers have refocused on multicore chips.  Instead of trying to  faster processor cores, they are making more cores in one physical processor chip.  The laptop or desktop you are working on now probably has around 4 cores in it.  The servers we use in Carleton's Research and Development Cloud can have up to 32 cores.  And even more cores could be available by writing programs that span multiple computers across a network.
 
-In this workshop, we will talk about the conceptual differences between sequential and parallel programming, discuss when to expect performance improvements from converting to parallel code, and as an example apply these concepts in practice to example Matlab code.
+However, only certain problems can be solved in parallel across multiple cores, and it does require some extra programming effort. In this workshop, we will talk about the conceptual differences between sequential and parallel programming, discuss when to expect performance improvements from converting to parallel code, and as an example apply these concepts in practice to example Matlab code.
 
 ## Using cores: Parallel vs Sequential Batch
 
