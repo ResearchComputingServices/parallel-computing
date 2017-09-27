@@ -84,7 +84,11 @@ As this graph demonstrates, there are only so many processors that would be wort
 
 ## Measuring speedup
 
-In practice, it may take some work to measure speedup.  You might not care exactly what your speedup is.  But if you are interested in doing parallel programming, then you are looking to make your code run faster.  So you will need some kind of experimental evidence that your parallelization is working.
+In practice, it may take some work to measure speedup, but it is important when making speed optimizations to your code that you ensure you are actually improving the speed. So you will need some kind of experimental evidence that your parallelization is working.
 
- - Measure against fastest sequential code
- - Fix input (discuss random seeds here)
+When parallelizing your code, you may make speed improvements that could also apply to the original sequential code.  Without making these improvements to the sequential code, you may see superlinear speedup.  This is why true speedup would be obtained by comparing against the best possible sequential code.
+
+More important is to fix your program's input and the size of your problem.  If you feed experimental data into your code, then you want to have a good dataset that is large enough to be representative of your full-scale problem, but not too large to make testing take forever.  The same dataset should be used to check the speed of your parallel code, so you are comparing apples to apples.  Also, it is wise to check that the results you obtain from the parallel code are not just faster, but in fact still the same as the original code!
+
+If you are using randomly generated numbers in your code, it is also important that they are repeatable for accurate performance measurement and to check correctness.  Computers can provide a sequence of pseudo-random numbers.  A random *seed* is used to initialize this sequence.  If you set the seed to a fixed value, then you will be able to check that the results stay the same as you are making parallelizing your code.  It presents a challenge to deal with a single sequence of pseudo-random numbers when you have multiple processors generating random numbers at the same time.  In this case, you could have multiple independent random number 
+sequences, but just make sure you do the same in your sequential code to check for correctness.  Later, we will show specific examples of how to deal with random numbers in parallel MATLAB.
