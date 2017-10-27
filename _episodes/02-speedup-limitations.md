@@ -76,11 +76,16 @@ We can calculate `Ts = 5+5+60+5+1 = 76`.  A formula to computer the time in para
 
 Here's what happens to speedup as you increase the number of processor cores:
 
-![Theoretical Speedup](../fig/speedup.svg)
+![Pseudocode Speedup Limit](../fig/speedup.svg)
 
 So on 2 processors, the parallel program should take 46 seconds.  On 10 processors, 22 seconds.  If it were possible to keep on going, on one thousand processors, 16 seconds.  On one million processors, still around 16 seconds.
 
 As this graph demonstrates, there are only so many processors that would be worth assigning to a particular program, as there are diminishing returns with larger numbers of processors.
+
+In fact, since speedup is a ratio of the sequential to parallel runtimes, the exact running time doesn't matter.  We can see from the following graph how much of an effect even a small section of sequential code has in a parallel program.
+
+![Illustration of Amdahl's Law](../fig/amdahl.svg)
+
 
 ## Measuring speedup
 

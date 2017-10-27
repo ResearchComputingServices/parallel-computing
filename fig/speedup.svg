@@ -220,10 +220,10 @@
          id="g144"><text
            id="text148"
            style="font-variant:normal;font-weight:bold;font-size:18px;font-family:Helvetica;-inkscape-font-specification:Helvetica-Bold;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           transform="matrix(1,0,0,-1,112.5,384.5)"><tspan
+           transform="matrix(1,0,0,-1,86.5004,384.5)"><tspan
              id="tspan146"
              y="0"
-             x="0 5.0040002 10.008 15.012 26.01 36.018002 42.012001 49.014 59.021999 65.015999 70.019997 81.017998 92.015999 97.019997 108.018 114.012 119.016 132.01199 148.01401 159.01199 169.02 180.01801 185.022 189.306 199.314 204.31799 215.31599 225.32401">Illustration of Amdahl's Law</tspan></text>
+             x="0 12.006 23.004 33.012001 43.02 54.018002 65.015999 76.014 81.017998 92.015999 98.010002 103.014 115.02 125.028 135.036 151.03799 162.036 167.03999 177.048 182.052 194.058 204.06599 214.07401 225.07201 236.07001 247.06799 257.07599 268.07401 279.07199">Speedup of Example Pseudocode</tspan></text>
 </g><path
          id="path150"
          style="fill:none;stroke:#0072bd;stroke-width:20;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
