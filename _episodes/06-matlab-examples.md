@@ -11,18 +11,18 @@ keypoints:
 ---
 
  * Code that can easily be parallelized with parfor
+   * Monte Carlo PI: area of circle
+   * Mandelbrot
  * Code that cannot be parallelized with parfor
-     * Small (e.g. 9-cell) time-stepped iterative model.  Perhaps something like a heat equation?
-     * Euclidean Algorithm
-     * Fibonnaci Sequence
-     * Iteratively Calculate PI
+     * Prefix Sum
+     * Game of Life
  * Code that can be parallelized with parfor, but with some changes
  * Example of RAM use in parfor (e.g. the slicing matrix example)?
      * Might be good for RAM use:
          * Inside loop: `B=A`
          * Sequential: size(B)*2
          * Parallel: size(B)*P
-  
+
 From https://www.mathworks.com/help/distcomp/decide-when-to-use-parfor.html:
 
 Fast parallel:

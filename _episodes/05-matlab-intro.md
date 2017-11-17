@@ -199,6 +199,96 @@ parfor result: 180
 
 ## Transparency
 
-Since Matlab needs to be able to inspect the variables in a parfor loop before running it, there are restrictions on what commands can be used inside the parallel loop.  These restrictions are called parallel transparency.  In particular, commands like ~save~/~load~, ~clear~, and ~eval~ cannot be used.  These commands modify Matlab's workspace variables without necessarily being obvious about what variables may be changing.
+Since Matlab needs to be able to inspect the variables in a parfor loop before running it, there are restrictions on what commands can be used inside the parallel loop.  These restrictions are called parallel transparency.  In particular, commands like `save`/`load`, `clear`, and `eval` cannot be used.  These commands modify Matlab's workspace variables without necessarily being obvious about what variables may be changing.
 
 One useful workaround is to put some of the parallel loop's code in a function.  Code inside a function does not need to be transparent. A Matlab function has its own variable workspace, so it does not affect the shared parallel workspace used in the parallel loop iterations.
+
+## Timing Matlab code
+
+We have mentioned that a very important point is to figure out which part of your code takes a long time.  Matlab provides the `tic` and `toc` commands to do this.  You just need to put a `tic` command where you want to start timing, and a `toc` command where you want to stop timing.  The `toc` command will print out how long the code between these commands took.  For example:
+
+~~~
+tic
+n = 200;
+A = 500;
+a = zeros(1,n);
+for i = 1:n
+    a(i) = max(abs(eig(rand(A))));
+end
+toc
+~~~
+{: .source}
+~~~
+Elapsed time is 18.636459 seconds.
+~~~
+{: .output }
+
+It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, make sure to add semicolons to most lines and not too many command window output commands such as `fprintf` or `display`.
+
+Another way to find the slow parts in your code is the Matlab profiler.
+
+## Vectorization
+
+Matlab has another powerful method for using multiple processor cores - vectorization.  In fact, this technique happens automatically for many operations and functions that act on large vectors or matrices.  For such operations where portions of the work can be done independently, Matlab will split up the work so each processor core has a piece of the work.
+
+Vectorization is limited to a single computer, unlike parfor parallelization.  This also allows for some additional efficiency, since unlike parfor, vectorized code can share the main copy of a matrix and not have to make a local copy for each processor core.
+
+Here is an example of vectorized code:
+
+~~~
+~~~
+{: .source }
+
+On the other hand, vectorizing code is limited to operations that can be performed on a matrix instead of individual elements in a for loop.  More complex loops often do not lend themselves to vectorization.
+
+Vectorization may also increase your memory use.  Consider this for loop:
+
+~~~
+y = 0;
+for i = 1:N
+  x = rand();
+  y = y + x;
+end
+y = y / N;
+~~~
+{: .source }
+
+This could be vectorized like so:
+
+~~~
+v_x = rand(,N);
+y = mean(v_x);
+~~~
+{: .source }
+
+However, the requires XYZ more memory, and even if that fits in your RAM, it would still be slower due to processor caching effects. **NOTE** is it slower?  Probably faster if it does fit in RAM.
+
+  - Automatic multicore: Vectorization
+      - Example that does well
+      - Example that doesn't do as well *(can I find one?)*
+
+## Disable Parallel Vectorization
+
+Many of Matlab's vectorized operations automatically make use of parallel processing for large matrices.  This at time may be efficient enough, in which case you don't need to do any more work to use multiple processor cores.
+
+However, in a few cases vectorization will use multiple cores without gaining much speedup.  You can test how fast your code runs on only one core by starting Matlab using the the *-singleCompThread* option. *(Describe how to use this option on Windows)*  It may be interesting to compare your Matlab code with a single computational core to the default with multiple cores to try to determine if there is any speedup.
+
+## Parallel Random Number Generation
+
+Random number generators create numbers from a particular sequence.  When running it parallel, it would be difficult and slow to share one random number sequence among workers.  Instead, Matlab automatically sets up a distinct random number sequence for each worker.
+
+Most of the time, this is exactly what you need.  However, if you are testing your code and want to see that the parallel version still gives correct results, then it is important to fix the random number sequence to a specific random seed.
+
+To do this in parallel Matlab:
+
+~~~
+SEED = 100;
+parfor ii = 1:N
+    s = RandStream('CombRecursive', 'Seed', SEED);
+    RandStream.setGlobalStream(s);
+    s.Substream = ii;
+    
+    fprintf(' ii=%d: %f %f %f\n', ii, randn(3,1));
+end
+~~~
+{: .source }
