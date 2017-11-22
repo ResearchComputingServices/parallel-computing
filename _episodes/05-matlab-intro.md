@@ -80,9 +80,7 @@ end
 ~~~
 {: .source }
 
-The loop variable (such as `i` in the case above) must be a consecutive range of integers.  You may convert a loop with a different sequence of loop values by performing a calculation in the loop, or looking up the required values in a precomputed vector.
-
-In this case, it is easy.  However, there are more details to look at to be able to successfully use parallel loops.
+In this case, the conversion to parfor was easy.  However, there are more details to look at to be able to successfully use parallel loops.
 
 ## Loop Independence
 
@@ -109,76 +107,48 @@ For reference, see [https://www.mathworks.com/help/distcomp/ensure-that-parfor-l
 
 Matlab classifies all variables used in a parallel for loop into categories.
 
-![Types of Variable Classifications](../fig/parfor_classification.svg)
-
 For reference, see [https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html](https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html)
-
 
 ### Temporary Variables
 
 Temporary variables are private to a loop iteration and will not be used outside the parallel loop, or in any other loop iteration.  Matlab determines that a variable inside a parfor is temporary if it is initialized to a value inside the loop.
 
-~~~
-parfor i = 1:N
-    A = zeros(N);
-    % Let's pretend there is more code here
-end
-~~~
-{: source }
+![Example of Temporary Variable](../fig/parfor_classification_temporary.svg)
 
-In the above code example, the variable A is set to an NxN matrix.  Note that the entire variable is being set.  To be considered a temporary variable, it is not enough to set just some elements in the array, for example this is *not* sufficient: `A(i,:) = zeros(1,N);`
+In the above code example, the variable ~T~ is set to an 1XN vectir.  Note that the entire variable is being assigned a vector.  To be considered a temporary variable, it is not enough to set just some elements in the array, for example this is *not* sufficient: `INCORRECT(i,:) = zeros(1,N);`
 
 Other loop variables are used in some way before and after the loop.  They all must be initialized before the loop starts to differentiate them from temporary variables.
 
+### Loop Variables
+
+The loop variable (such as `i` in the example here) must be a consecutive range of integers.  You may convert a loop with a different sequence of loop values by performing a calculation in the loop, or looking up the required values in a precomputed vector.
+
+![Example of Loop Variable](../fig/parfor_classification_loop.svg)
+
 ### Sliced Variables
 
-Sliced variables are vectors (or matrices) that are sized to have an element (or row/column) for each loop iteration.  Each loop iteration can write to only its element, indexed by the loop variable.  For example, `A` is a sliced variable in this parallel loop:
+Sliced variables are vectors (or matrices) that are sized to have an element (or row/column) for each loop iteration.  Each loop iteration can write to only its element, indexed by the loop variable.  For example, `S` is a sliced variable in this parallel loop:
 
-~~~
-S = zeros(100);
-parfor i = 1:100
-    S(i, :) = rand(100,:);
-end
-~~~
-{: .source }
+![Example of Sliced Variable](../fig/parfor_classification_sliced.svg)
 
 The indexing into a sliced variable must be kept simple, so that Matlab can be assured that each loop iteration is indeed writing values to distinct locations.  Matlab gives each worker just its slice of the variable, so that the entire variable does not need to be shared, which saves some time and memory.
 
 ### Broadcast Variables
 
-A broadcast variable is simply a variable that is read-only.  That is, values from the variable are used in the parallel loop, but the variable is never updated inside the loop.  This kind of variable is sent in whole to all the workers, hence why it is termed a broadcast variable.
+A broadcast variable is simply a variable that is read-only inside the loop.  That is, values from the variable are used in the parallel loop, but the variable is never updated inside the loop.  A copy of the entire variable is sent to every worker, which why it is termed a broadcast variable.
 
-In this code example, B is a broadcast variable.  The S variable, as in the previous example, is a sliced variable.
+In this code example, `B` is a broadcast variable.
 
-~~~
-B = rand(100);
-S = zeros(100);
-parfor i = 1:100
-    if i == 1
-        S(i,:) = B(1,:);
-    else
-        S(i,:) = B(i,:)*B(i-1,:);
-end
-~~~
-{: .source }
+![Example of Broadcast Variable](../fig/parfor_classification_broadcast.svg)
 
 ### Reduction Variables
 
+
 A reduction variable is a useful way to get a summary value from a parallel loop.  It is the result of some operation that combines values in each loop iteration.  It is a variable that is shared between loop iteration.  However, the operation that updates the variable should be associated.  That is, the order in which the variable is updated shouldn't affect the result, since parallel loop iterations do not complete in a deterministic order.
 
-For example, `total` is a reduction variable in this example:
+For example, `R` is a reduction variable in this example:
 
-~~~
-total = 0;
-B = 1:100;
-for i = 1:100
-    if B(i) < 50 && B(i) > 59
-        total = total + B(i)
-    end
-end
-display(B)
-~~~
-{: .source}
+![Example of Reduction Variable](../fig/parfor_classification_reduction.svg)
 
 As mentioned, reduction variables will not work correctly with non-associative operations.  For example, division will not always result in the right answer:
 

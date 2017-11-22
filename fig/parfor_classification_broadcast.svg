@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="21cm"
+   height="8cm"
+   viewBox="0 0 210 80"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="parfor_classification_broadcast.svg">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="marker9765"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path9763"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#b4b400;stroke-width:1pt;stroke-opacity:1;fill:#b4b400;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path4622"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#b4b400;stroke-width:1pt;stroke-opacity:1;fill:#b4b400;fill-opacity:1"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="417.25835"
+     inkscape:cy="133.72746"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1090"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     units="cm" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-217.00001)">
+    <rect
+       style="fill:#ffffc5;fill-opacity:1;stroke:#b4b400;stroke-width:0.4220745;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect12309"
+       width="34.175488"
+       height="8.2294464"
+       x="60.775356"
+       y="229.76324" />
+    <rect
+       style="fill:#ffffc5;fill-opacity:1;stroke:#b4b400;stroke-width:0.42207453;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect12309-9"
+       width="8.0951357"
+       height="8.2294617"
+       x="110.87287"
+       y="272.24258" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="11.717261"
+       y="22.400297"
+       id="text4829"><tspan
+         sodipodi:role="line"
+         id="tspan4827"
+         x="11.717261"
+         y="31.764067"
+         style="stroke-width:0.26458332" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.47396564px;line-height:0.78174055;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26184914"
+       x="63.867352"
+       y="227.57986"
+       id="text4833"><tspan
+         sodipodi:role="line"
+         id="tspan4831"
+         x="63.867352"
+         y="227.57986"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         dx="0 -1.8703508">N = 100;</tspan><tspan
+         sodipodi:role="line"
+         x="63.867352"
+         y="236.03525"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         id="tspan4835">b = pi;</tspan><tspan
+         sodipodi:role="line"
+         x="63.867352"
+         y="244.49063"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         id="tspan4837">S = zeros(N);</tspan><tspan
+         sodipodi:role="line"
+         x="63.867352"
+         y="252.94601"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         id="tspan4839">R = 0;</tspan><tspan
+         sodipodi:role="line"
+         x="63.867352"
+         y="261.4014"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:5.23698282px;font-family:monospace;-inkscape-font-specification:'monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         id="tspan4841"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.26184914;stroke-opacity:1"
+   id="tspan4851">parfor</tspan> i = 1:N</tspan><tspan
+         sodipodi:role="line"
+         x="63.867352"
+         y="269.85681"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         id="tspan4843">    T = rand(1,N);</tspan><tspan
+         sodipodi:role="line"
+         x="63.867352"
+         y="278.31219"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         id="tspan4845">    S(i,:) = b * T;</tspan><tspan
+         sodipodi:role="line"
+         x="63.867352"
+         y="286.76758"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         id="tspan4847">    R = R + max(A);</tspan><tspan
+         sodipodi:role="line"
+         x="63.867352"
+         y="295.22296"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.26184914;stroke-opacity:1"
+         id="tspan4849">end</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4881"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="scale(0.26458333)"><flowRegion
+         id="flowRegion4883"><rect
+           id="rect4885"
+           width="3.5714285"
+           height="77.85714"
+           x="90.714287"
+           y="441.09113" /></flowRegion><flowPara
+         id="flowPara4887" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;line-height:1.25;font-family:monospace;-inkscape-font-specification:'monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#b4b400;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="155.99138"
+       y="252.16357"
+       id="text4961"><tspan
+         sodipodi:role="line"
+         id="tspan4959"
+         x="155.99138"
+         y="252.16357"
+         style="stroke-width:0.26458332;fill:#b4b400;fill-opacity:1;">broadcast</tspan></text>
+    <path
+       style="fill:none;stroke:#b4b400;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker9765)"
+       d="m 156.10416,250.13096 -36.20071,24.65068"
+       id="path9671"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#b4b400;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
+       d="M 156.10416,250.13096 95.413749,234.7905"
+       id="path9741"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
