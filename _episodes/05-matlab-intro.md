@@ -109,7 +109,7 @@ For reference, see [https://www.mathworks.com/help/distcomp/ensure-that-parfor-l
 
 Matlab classifies all variables used in a parallel for loop into categories.
 
-![Types of Variable Classifications](../fig/parfor_classification_v2.svg)
+![Types of Variable Classifications](../fig/parfor_classification.svg)
 
 For reference, see [https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html](https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html)
 
