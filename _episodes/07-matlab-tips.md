@@ -53,6 +53,8 @@ Time with preallocation: 0.193926 seconds
 ~~~
 {: .output }
 
+For reference, see [https://www.mathworks.com/help/matlab/matlab_prog/preallocating-arrays.html](https://www.mathworks.com/help/matlab/matlab_prog/preallocating-arrays.html)
+
 
 ## Vectorization
 
@@ -61,6 +63,8 @@ Instead of using a for-loop on individual (scalar) values, if the data for each 
 One big benefit of vectorization is that Matlab will automatically parallelize certain large operations
 
 *Show parallel_slow.m example*
+
+For reference, see [https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html](https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html)
 
 ## Loop Constants
 

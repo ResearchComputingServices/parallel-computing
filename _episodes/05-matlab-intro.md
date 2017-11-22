@@ -93,7 +93,7 @@ For example, this loop would not work in parallel:
 v = rand(1,1000);
 z = zeros(1,1000)
 z(1) = 0;
-for i = 1:1000
+for i = 2:1000
     if v(i) > z(i-1)
         z(i) = v(i);
     else
@@ -103,9 +103,16 @@ end
 ~~~
 {: .source}
 
+For reference, see [https://www.mathworks.com/help/distcomp/ensure-that-parfor-loop-iterations-are-independent.html](https://www.mathworks.com/help/distcomp/ensure-that-parfor-loop-iterations-are-independent.html)
+
 ## Variable Classification
 
 Matlab classifies all variables used in a parallel for loop into categories.
+
+![Types of Variable Classifications](../fig/parfor_classification_v2.svg)
+
+For reference, see [https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html](https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html)
+
 
 ### Temporary Variables
 
@@ -119,7 +126,7 @@ end
 ~~~
 {: source }
 
-In the above code example, the first code using the variable A is setting A to an NxN matrix.  Note that the entire variable is being set.  To be considered a temporary variable, it is not enough to set just some elements in the array, for example this is not sufficient: `A(i,:) = zeros(1,N);`
+In the above code example, the variable A is set to an NxN matrix.  Note that the entire variable is being set.  To be considered a temporary variable, it is not enough to set just some elements in the array, for example this is *not* sufficient: `A(i,:) = zeros(1,N);`
 
 Other loop variables are used in some way before and after the loop.  They all must be initialized before the loop starts to differentiate them from temporary variables.
 
@@ -203,6 +210,8 @@ Since Matlab needs to be able to inspect the variables in a parfor loop before r
 
 One useful workaround is to put some of the parallel loop's code in a function.  Code inside a function does not need to be transparent. A Matlab function has its own variable workspace, so it does not affect the shared parallel workspace used in the parallel loop iterations.
 
+For reference, see [https://www.mathworks.com/help/distcomp/transparency.html](https://www.mathworks.com/help/distcomp/transparency.html)
+
 ## Timing Matlab code
 
 We have mentioned that a very important point is to figure out which part of your code takes a long time.  Matlab provides the `tic` and `toc` commands to do this.  You just need to put a `tic` command where you want to start timing, and a `toc` command where you want to stop timing.  The `toc` command will print out how long the code between these commands took.  For example:
@@ -226,6 +235,8 @@ Elapsed time is 18.636459 seconds.
 It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, make sure to add semicolons to most lines and not too many command window output commands such as `fprintf` or `display`.
 
 Another way to find the slow parts in your code is the Matlab profiler.
+
+Details on using the Matlab profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
 
 ## Vectorization
 
@@ -272,6 +283,8 @@ However, the requires XYZ more memory, and even if that fits in your RAM, it wou
 Many of Matlab's vectorized operations automatically make use of parallel processing for large matrices.  This at time may be efficient enough, in which case you don't need to do any more work to use multiple processor cores.
 
 However, in a few cases vectorization will use multiple cores without gaining much speedup.  You can test how fast your code runs on only one core by starting Matlab using the the *-singleCompThread* option. *(Describe how to use this option on Windows)*  It may be interesting to compare your Matlab code with a single computational core to the default with multiple cores to try to determine if there is any speedup.
+
+From a Windows Command Prompt, a Linux terminal, you may run the command ~matlab -singleCompThread~.
 
 ## Parallel Random Number Generation
 
