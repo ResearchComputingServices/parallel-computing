@@ -204,9 +204,7 @@ Elapsed time is 18.636459 seconds.
 
 It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, make sure to add semicolons to most lines and not too many command window output commands such as `fprintf` or `display`.
 
-Another way to find the slow parts in your code is the Matlab profiler.
-
-Details on using the Matlab profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
+Another way to find the slow parts in your code is the Matlab profiler. Details on using the Matlab profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
 
 ## Vectorization
 

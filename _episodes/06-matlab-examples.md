@@ -52,23 +52,39 @@ Once the pool is started, run your parallel code.  What speedup did you obtain?
 
 ## Limits of parfor
 
-*Include example here of prefix sum*
+It is important to reiterate that not all Matlab `for` loops can be converted to `parfor`.
 
+For example, the prefix sum problem computes the sums of elements up to a particular location in a vector, for every location in the vector.  In Matlab this is called the `cumsum` function.  Our own code to compute this might look like:
+
+~~~
+n = 20
+V = randi(2,1,n)-1;
+prefix = zeros(n)
+
+V
+for ii = 2:n
+    V(ii) = V(ii) + V(ii-1);
+end
+V
+~~~
+{: .source}
+
+There is an dependency for the current prefix sum element on the previous one.  This stops us from being able to use a parfor.  When working on your own projects, it is worthwhile to remember that not all Matlab loops can be parallelized.
 
 ## Parallel Matlab performance
 
-Fast parallel:
+Here is another example of a parallel loop.  This loop obtains appreciable speedup:
 ~~~
 n = 200;
 A = 500;
 a = zeros(n);
-for i = 1:n
+parfor i = 1:n
     a(i) = max(abs(eig(rand(A))));
 end
 ~~~
 {: .source }
 
-Slow parallel:
+On the other hand, this is a valid `parfor` loop that does not run faster than a regular `for` loop":
 ~~~
 n = 1024;
 A = zeros(n);
@@ -77,6 +93,8 @@ parfor (i = 1:n)
 end
 ~~~
 {: .source }
+
+The first loop performs a longer computation within each loop iteration, and only returns 
 
 For reference: [https://www.mathworks.com/help/distcomp/decide-when-to-use-parfor.html](https://www.mathworks.com/help/distcomp/decide-when-to-use-parfor.html)
 
@@ -88,4 +106,5 @@ Let's look at code that computes and then draws the Mandelbrot set. This example
 
 The Mandelbrot set is an example of a fractal, where a rough-edged geometric pattern repeats indefinitely as you zoom in.  It is fun to look at, so it makes a good example.
 
-You can find 05/mandelbrot.m in the files that you downloaded.  If you try running this now, you will see that it takes a while to compute all the points in a particular zoomed image on the Mandelbrot set.  The set is then displayed, along with the time to compute.
+You can find 05/mandelbrot.m in the files that you downloaded.  If you try running this now, you will see that it takes a while to compute all the points in a particular zoomed image on the Mandelbrot set.  The set is then displayed, along with the time to compute.  This code can be parallelized with a parfor, but a few fixes will need to be made.  Can you figure out how to make a `parfor` version of mandelbrot.m?
+
