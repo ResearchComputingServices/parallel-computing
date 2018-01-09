@@ -58,11 +58,7 @@ For reference, see [https://www.mathworks.com/help/matlab/matlab_prog/preallocat
 
 ## Vectorization
 
-Instead of using a for-loop on individual (scalar) values, if the data for each loop iteration can be stored in a matrix or vector, then victimization is an option.  Matlab has operations that perform a computation on each element in a matrix.  For example, the ~.*~ element-wise operator will multiply each element of an array with the matching element.
-
-One big benefit of vectorization is that Matlab will automatically parallelize certain large operations
-
-*Show parallel_slow.m example*
+As previously discussed, vectorized operations perform computation on each element in a matrix.  For example, the `.*` element-wise operator will multiply each element of an array with the matching element.  Using vectorization where possible can help to speed up your code.
 
 For reference, see [https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html](https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html)
 
