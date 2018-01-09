@@ -63,7 +63,7 @@ Let us look at an example:
 
 ~~~
 S = zeros(numHands, numPlayers);
-parfor i = 1:numPlayers
+for i = 1:numPlayers
    S(:, i) = pctdemo_task_blackjack(numHands, i);
 end
 ~~~
@@ -71,14 +71,14 @@ end
 
 This loop executes the function `pctdemo_task_blackjack`.  It does this `N` times;  we call each time a loop iteration.  To run this in parallel we need to change the `for` to a `parfor`:
 
-
 ~~~
 S = zeros(numHands, numPlayers);
-for i = 1:numPlayers
+parfor i = 1:numPlayers
    S(:, i) = pctdemo_task_blackjack(numHands, i);
 end
 ~~~
 {: .source }
+
 
 In this case, the conversion to parfor was easy.  However, there are more details to look at to be able to successfully use parallel loops.
 
@@ -86,7 +86,7 @@ In this case, the conversion to parfor was easy.  However, there are more detail
 
 The above code works because each loop iteration is independent.  This means that values calculated in a previous iteration are not required in future iterations.  This independence is necessary otherwise only one iteration could run at a time, with others waiting on results.  So loops either must be independent, or you must be able to make them so in order to use parallel for loops.
 
-For example, this loop would not work in parallel:
+For example, this loop would not work in parallel.  In particular the value of z(i-1) is used in the loop calculate the value of z(i):
 ~~~
 v = rand(1,1000);
 z = zeros(1,1000)
@@ -105,7 +105,7 @@ For reference, see [https://www.mathworks.com/help/distcomp/ensure-that-parfor-l
 
 ## Variable Classification
 
-Matlab classifies all variables used in a parallel for loop into categories.
+Matlab classifies all variables used in a parallel for loop into categories.  Let's take a look at the different kinds of classifications.  We will use the example [code/classification.m](../code/classification.m)
 
 For reference, see [https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html](https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html)
 
@@ -208,9 +208,11 @@ Another way to find the slow parts in your code is the Matlab profiler. Details 
 
 ## Vectorization
 
-Matlab has another powerful method for using multiple processor cores - vectorization.  In fact, this technique happens automatically for many operations and functions that act on large vectors or matrices.  For such operations where portions of the work can be done independently, Matlab will split up the work so each processor core has a piece of the work.
+Another technique for improving Matlab code performance is vectorization.  This is a large subject, and we will only scratch the surface in this lesson.
 
-Vectorization is limited to a single computer, unlike parfor parallelization.  This also allows for some additional efficiency, since unlike parfor, vectorized code can share the main copy of a matrix and not have to make a local copy for each processor core.
+Many operators and functions in Matlab can be applied to an entire matrix.  This can replace loops that apply the operations to each matrix element individually.  Resulting vectorized code can be more compact for you to read.  It is also often fast as Mathworks implements such functions in optimized ways in Matlab's internals.  In fact, Matlab will implicitly run many vectorized operations in parallel to use more than one CPU core without need for an explicit `parfor` statement.
+
+The way that Matlab creates parallel workers for vectorized matrix operations is different than how `parfor` works.  The vectorized parallel workers are threaded, which allows for some additional efficiency due to variable sharing.  The `parfor`'s approach is able to scale across multiple computers, at least in principle.
 
 Here is an example of vectorized code:
 
@@ -218,7 +220,7 @@ Here is an example of vectorized code:
 ~~~
 {: .source }
 
-On the other hand, vectorizing code is limited to operations that can be performed on a matrix instead of individual elements in a for loop.  More complex loops often do not lend themselves to vectorization.
+On the other hand, vectorizing code is limited to operations that can be performed on a matrix instead of individual elements in a for loop.  It can be difficult use this approach with complex loops that often do not lend themselves to vectorization.
 
 Vectorization may also increase your memory use.  Consider this for loop:
 
@@ -248,11 +250,11 @@ However, the requires XYZ more memory, and even if that fits in your RAM, it wou
 
 ## Disable Parallel Vectorization
 
-Many of Matlab's vectorized operations automatically make use of parallel processing for large matrices.  This at time may be efficient enough, in which case you don't need to do any more work to use multiple processor cores.
+Many of Matlab's vectorized operations automatically make use of parallel processing for large matrices.  This can make efficient use of all cores, in which case you don't need to do any more work to use multiple processor cores.
 
-However, in a few cases vectorization will use multiple cores without gaining much speedup.  You can test how fast your code runs on only one core by starting Matlab using the the *-singleCompThread* option. *(Describe how to use this option on Windows)*  It may be interesting to compare your Matlab code with a single computational core to the default with multiple cores to try to determine if there is any speedup.
+However, in a few cases vectorization will use multiple cores without gaining much speedup.  You can test how fast your code runs on only one core by starting Matlab using the the *-singleCompThread* option. It may be interesting to compare your Matlab code with a single computational core to the default with multiple cores to determine speedup from this feature.
 
-From a Windows Command Prompt, a Linux terminal, you may run the command ~matlab -singleCompThread~.
+From a Windows Command Prompt or a Linux terminal, you may run the command ~matlab -singleCompThread~ to use Matlab without multithreaded vectorized operations.  From a Mac you need to open a terminal, and run Matlab using the full folder path to Matlab, for example ~/Applications/MATLAB_R2017a.app/bin/matlab -singleCompThread~.
 
 ## Parallel Random Number Generation
 

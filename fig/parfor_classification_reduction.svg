@@ -84,7 +84,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="396.85039"
+     inkscape:cx="263.6361"
      inkscape:cy="173.10375"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -103,7 +103,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -161,7 +161,7 @@
          id="tspan4837">S = zeros(N);</tspan><tspan
          sodipodi:role="line"
          x="63.867352"
-         y="252.94601"
+         y="252.94603"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
          id="tspan4839">R = 0;</tspan><tspan
          sodipodi:role="line"
@@ -185,7 +185,7 @@
          x="63.867352"
          y="286.76758"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
-         id="tspan4847">    R = R + max(A);</tspan><tspan
+         id="tspan4847">    R = R + max(T);</tspan><tspan
          sodipodi:role="line"
          x="63.867352"
          y="295.22296"

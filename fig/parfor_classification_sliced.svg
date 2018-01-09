@@ -56,7 +56,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="280.92491"
+     inkscape:cx="186.72819"
      inkscape:cy="176.42299"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -133,7 +133,7 @@
          id="tspan4837">S = zeros(N);</tspan><tspan
          sodipodi:role="line"
          x="63.867352"
-         y="252.94601"
+         y="252.94603"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
          id="tspan4839">R = 0;</tspan><tspan
          sodipodi:role="line"
@@ -157,7 +157,7 @@
          x="63.867352"
          y="286.76758"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
-         id="tspan4847">    R = R + max(A);</tspan><tspan
+         id="tspan4847">    R = R + max(T);</tspan><tspan
          sodipodi:role="line"
          x="63.867352"
          y="295.22296"
@@ -197,5 +197,16 @@
        id="path10418"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;line-height:1.25;font-family:monospace;-inkscape-font-specification:'monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="128.28937"
+       y="284.97287"
+       id="text7474"><tspan
+         sodipodi:role="line"
+         id="tspan7472"
+         x="128.28937"
+         y="290.59113"
+         style="stroke-width:0.26458332"></tspan></text>
   </g>
 </svg>
