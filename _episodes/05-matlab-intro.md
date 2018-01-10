@@ -29,7 +29,7 @@ Some of these topics may go in a later section.  But I wanted to capture them so
 
 We have discussed in abstract the principles behind using parallel programming to improve code performance.  Now let us turn to more concrete examples using Matlab.
 
-## Starting Parallel Matlab
+## Starting Matlab Parallel Pool
 
 When Matlab runs parallel code, it needs a parallel pool.  Your main Matlab code starts up a set of workers, that will work simultaneously on any parallel sections in your code.  The main Matlab code assigns work to each of the works, and gathers the results after the parallel section is complete.
 
@@ -176,7 +176,7 @@ parfor result: 180
 
 ## Transparency
 
-Since Matlab needs to be able to inspect the variables in a parfor loop before running it, there are restrictions on what commands can be used inside the parallel loop.  These restrictions are called parallel transparency.  In particular, commands like `save`/`load`, `clear`, and `eval` cannot be used.  These commands modify Matlab's workspace variables without necessarily being obvious about what variables may be changing.
+Since Matlab needs to be able to inspect the variables in a parfor loop before running it, there are restrictions on what commands can be used inside the parallel loop.  These restrictions are called parallel transparency.  In particular, commands like `save`/`load`, `clear`, and `eval` cannot be used.  These commands modify Matlab's workspace variables, making it difficult for Matlab to determine what variables may be changing.
 
 One useful workaround is to put some of the parallel loop's code in a function.  Code inside a function does not need to be transparent. A Matlab function has its own variable workspace, so it does not affect the shared parallel workspace used in the parallel loop iterations.
 
@@ -204,7 +204,7 @@ Elapsed time is 18.636459 seconds.
 
 It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, make sure to add semicolons to most lines and not too many command window output commands such as `fprintf` or `display`.
 
-Another way to find the slow parts in your code is the Matlab profiler. Details on using the Matlab profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
+Another way to find the slow parts in your code is the Matlab profiler.  When you run code with the profiler enabled, Matlab tracks the amount of time spent in each function, and each line of code.  You can then generate a report that shows which lines are taking the most time. Details on using the Matlab profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
 
 ## Parallel Random Number Generation
 
