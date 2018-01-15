@@ -12,11 +12,10 @@ keypoints:
 
 ## Overview
 
-We have seen the details of how to use Matlab's parfor command to improve your code's performance.  Mathworks in fact recommends a few different techniques to improve Matlab code performance.  These techniques are preallocation, vectorization, parallelization, and loop constants.
+Emphasis in this workshop is on parallel computing.  Parallelism is great for fully utilizing hardware - it is how you can speed up already "tuned" code to go beyond what you can do on your laptop.  The point of parallel computing is to improve your code's performance.  Because clock speed is not going up (i.e. CPU cores are not getting faster), we need to make efficient use of multicore hardware to achieve performance gains.
 
-## Parallelization
+However, it is also worth mentioned the different methods used to tune code before parallelism must be used.  Mathworks in fact recommends a few different techniques to improve Matlab code performance.  These techniques are preallocation, vectorization, parallelization, and loop constants.
 
-As we have seen with parfor, Matlab has commands that allow you to explicitly break apart work into separate pieces to run at once.  Matlab has other advanced parallel programming constructions.  For example, parfeval calls a function in parallel across multiple inputs.  The spmd command runs one task for each worker processor and can even exchange data between tasks.  These additional Matlab parallelization techniques are out of scope of this workshop and will not be discussed in detail.
 
 ## Preallocation
 
@@ -56,12 +55,6 @@ Time with preallocation: 0.193926 seconds
 For reference, see [https://www.mathworks.com/help/matlab/matlab_prog/preallocating-arrays.html](https://www.mathworks.com/help/matlab/matlab_prog/preallocating-arrays.html)
 
 
-## Vectorization
-
-As previously discussed, vectorized operations perform computation on each element in a matrix.  For example, the `.*` element-wise operator will multiply each element of an array with the matching element.  Using vectorization where possible can help to speed up your code.
-
-For reference, see [https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html](https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html)
-
 ## Loop Constants
 
 The idea with this optimization is simple.  If you are computing the same value for a variable every time through a loop, then you are repeatedly calculating the same thing.  Instead, if you can just calculate the value once outside the loop, then you will save some time.
@@ -93,3 +86,16 @@ toc;
 Elapsed time is 2.116375 seconds
 ~~~
 {: .output }
+
+
+## Vectorization
+
+As previously discussed, vectorized operations perform computation on each element in a matrix.  For example, the `.*` element-wise operator will multiply each element of an array with the matching element.  Using vectorization where possible can help to speed up your code.
+
+For reference, see [https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html](https://www.mathworks.com/help/matlab/matlab_prog/vectorization.html)
+
+
+## Parallelization
+
+As we have seen with parfor, Matlab has commands that allow you to explicitly break apart work into separate pieces to run at once.  Matlab has other advanced parallel programming constructions.  For example, parfeval calls a function in parallel across multiple inputs.  The spmd command runs one task for each worker processor and can even exchange data between tasks.  These additional Matlab parallelization techniques are out of scope of this workshop and will not be discussed in detail.
+
