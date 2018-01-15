@@ -10,6 +10,7 @@ keypoints:
 - "First key point."
 ---
 
+
 ## What is Vectorization?
 
 Another technique for improving Matlab code performance is vectorization.  This is a large subject, and we will only scratch the surface in this lesson.
@@ -20,33 +21,27 @@ The way that Matlab creates parallel workers for vectorized matrix operations is
 
 On the other hand, vectorizing code is limited to operations that can be performed on a matrix instead of individual elements in a for loop.  It can be difficult to use this approach with complex loops that often do not lend themselves to vectorization.
 
-Let's now look at an example of vectorized code.  The PI monte carlo code can be vectorized, as shown in this example: [code/montecarlo/solution/montecarlo_vectorized.m](../code/montecarlo/solution/montecarlo_vectorized.m)
+Let us take the following code as an example:
+
+~~~
+~~~
+{: .source }
+
+A vector
+
 
 ## Memory use
 
-**NOTE** Just use above montecarlo example!
-
-Vectorization may also increase your memory use.  Consider this for loop:
+Let's now look at an example of vectorized code.  The monte carlo method to calculate PI can be vectorized, as shown in this example: [code/montecarlo/solution/montecarlo_vectorized.m](../code/montecarlo/solution/montecarlo_vectorized.m)
 
 ~~~
-y = 0;
-for i = 1:N
-  x = rand();
-  y = y + x;
-end
-y = y / N;
+N = 2E8;
+x = rand(1,N);
+y = rand(1,N);
+incircle = sum(sqrt(x.^2 + y.^2)<1.0);
+mypi = 4*(incircle/N);
 ~~~
-{: .source }
-
-This could be vectorized like so:
-
-~~~
-v_x = rand(,N);
-y = mean(v_x);
-~~~
-{: .source }
-
-However, the requires XYZ more memory, and even if that fits in your RAM, it would still be slower due to processor caching effects. **NOTE** is it slower?  Probably faster if it does fit in RAM.
+{: .source}
 
 ## Disable Parallel Vectorization
 
