@@ -43,6 +43,10 @@ mypi = 4*(incircle/N);
 ~~~
 {: .source}
 
+
+![Monte Carlo Speedup](../fig/speedup_montecarlo.png)
+
+
 ## Disable Parallel Vectorization
 
 Many of Matlab's vectorized operations automatically make use of parallel processing for large matrices.  This can make efficient use of all cores, in which case you don't need to do any more work to use multiple processor cores.

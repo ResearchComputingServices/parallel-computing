@@ -2,7 +2,7 @@
 % Runs given scripts, timing their execution.  Results are report to
 % compare the relative speeds of the scripts.
 
-scripts = {'processimage;', 'processimage_vectorized;'};
+scripts = {'processimage', 'processimage_parallel', 'processimage_vectorized'};
 
 % Number of timing repetitions for each script
 reps = 1;
