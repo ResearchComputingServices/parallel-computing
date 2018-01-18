@@ -2,8 +2,6 @@
 % Runs given scripts, timing their execution.  Results are report to
 % compare the relative speeds of the scripts.
 
-clc
-
 addpath '..';
 scripts = {'montecarlo', 'montecarlo_parallel', 'montecarlo_vectorized'};
 

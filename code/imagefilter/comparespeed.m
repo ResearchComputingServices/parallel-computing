@@ -2,8 +2,6 @@
 % Runs given scripts, timing their execution.  Results are report to
 % compare the relative speeds of the scripts.
 
-%%%clc
-
 scripts = {'processimage;', 'processimage_vectorized;'};
 
 % Number of timing repetitions for each script
