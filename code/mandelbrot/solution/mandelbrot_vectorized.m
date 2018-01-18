@@ -1,4 +1,7 @@
-clear;
+if not(exist('MANDELBROT_VISUAL'))
+    MANDELBROT_VISUAL=true;
+end
+
 maxIterations = 1000;
 gridSize = 2000;
 xlim = [-0.748766713922161, -0.748766707771757];
@@ -23,10 +26,12 @@ count = log( count );
 
 % Show
 cpuTime = toc( t );
-fig = figure;
-fig.Position = [200 200 600 600];
-imagesc( x, y, count );
-colormap( [jet();flipud( jet() );0 0 0] );
-axis off
-title( sprintf( '%1.2fsecs (vectorized)', cpuTime ) );
-cpuTime
+if MANDELBROT_VISUAL
+    fig = figure;
+    fig.Position = [200 200 600 600];
+    imagesc( x, y, count );
+    colormap( [jet();flipud( jet() );0 0 0] );
+    axis off
+    title( sprintf( '%1.2fsecs (vectorized)', cpuTime ) );
+    cpuTime
+end

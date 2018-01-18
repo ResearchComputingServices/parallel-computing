@@ -1,5 +1,4 @@
-tic;
-N = 1E9;
+N = 2E8;
 incircle = 0;
 for ii = 1:N
     x = rand();
@@ -8,4 +7,4 @@ for ii = 1:N
         incircle = incircle + 1;
     end
 end
-fprintf('Sequential took %f s pi=%f\n', toc, 4*(incircle/N));
+mypi = 4*(incircle/N);

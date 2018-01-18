@@ -17,7 +17,7 @@ count = ones( size(z0) );
 z = zeros(gridSize);
 
 % Calculate
-parfor ii = 1:gridSize
+for ii = 1:gridSize
     for jj = 1:gridSize
         z(ii,jj) = z0(ii,jj);
         while count(ii,jj) < maxIterations && abs(z(ii,jj))<=2
@@ -36,6 +36,6 @@ if MANDELBROT_VISUAL
     imagesc( x, y, count );
     colormap( [jet();flipud( jet() );0 0 0] );
     axis off
-    title( sprintf( '%1.2fsecs (parallel)', cpuTime ) );
+    title( sprintf( '%1.2fsecs (sequential)', cpuTime ) );
     cpuTime
 end
