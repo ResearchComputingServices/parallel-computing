@@ -48,13 +48,13 @@ for s = 1:numscripts
 end
 
 %% Graph results
-% bar(categorical(scripts), averages);
-% title('Average Duration (s)');
-% set(gca,'TickLabelInterpreter','none')
-% figure;
-% bar(categorical(scripts), speedup, 'r');
-% title('Speedup vs first script');
-% set(gca,'TickLabelInterpreter','none')
+bar(categorical(scripts), averages);
+title('Average Duration (s)');
+set(gca,'TickLabelInterpreter','none')
+figure;
+bar(categorical(scripts), speedup, 'r');
+title('Speedup vs first script');
+set(gca,'TickLabelInterpreter','none')
 
 %% Helper function to run a command stored in a string
 function runscript(scriptname, img)
