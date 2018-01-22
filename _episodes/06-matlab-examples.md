@@ -10,22 +10,6 @@ keypoints:
 - "First key point."
 ---
 
-## Outline (delete after writing)
-
- * Code that can easily be parallelized with parfor
-   * Monte Carlo PI: area of circle
-   * Mandelbrot
- * Code that cannot be parallelized with parfor
-     * Prefix Sum
-     * Game of Life
- * Code that can be parallelized with parfor, but with some changes
- * Example of RAM use in parfor (e.g. the slicing matrix example)?
-     * Might be good for RAM use:
-         * Inside loop: `B=A`
-         * Sequential: size(B)*2
-         * Parallel: size(B)*P
-
-
 ## Example Matlab parfor
 
 ### Monte Carlo Illustration
@@ -94,7 +78,7 @@ end
 ~~~
 {: .source }
 
-The first loop performs a longer computation within each loop iteration, and only returns 
+The first loop performs a longer computation within each loop iteration, and only returns a single value from the workers back to the main Matlab process.  On the other hand, the second loop take a relatively long time when sharing more data with the workers.  This is an example of how communication overhead can adversely affect performance of parallel code.
 
 For reference: [https://www.mathworks.com/help/distcomp/decide-when-to-use-parfor.html](https://www.mathworks.com/help/distcomp/decide-when-to-use-parfor.html)
 
@@ -107,4 +91,8 @@ Let's look at code that computes and then draws the Mandelbrot set. The Mandelbr
 
 The code is available at [code/mandelbrot/mandelbrot_fixthis.m](../code/mandelbrot/mandelbrot_fixthis.m).  If you try running this now, you will see that it takes a while to compute all the points in a particular zoomed image on the Mandelbrot set.  The set is then displayed, along with the time to compute.  This code can be parallelized with a parfor, but a few fixes will need to be made.  Can you figure out how to make a `parfor` version of mandelbrot.m?
 
+![Filter Image Speedup](../fig/speedup_mandelbrot.png)
+
 This example is based on code from [the Mathworks website](https://www.mathworks.com/help/distcomp/examples/illustrating-three-approaches-to-gpu-computing-the-mandelbrot-set.html)
+
+
