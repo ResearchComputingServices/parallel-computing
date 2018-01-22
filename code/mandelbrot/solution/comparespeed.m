@@ -2,7 +2,8 @@
 % Runs given scripts, timing their execution.  Results are report to
 % compare the relative speeds of the scripts.
 
-scripts = {'mandelbrot_sequential', 'mandelbrot_parallel', 'mandelbrot_vectorized'};
+addpath '..';
+scripts = {'mandelbrot_fixthis', 'mandelbrot_sequential', 'mandelbrot_parallel', 'mandelbrot_vectorized'};
 
 % Number of timing repetitions for each script
 reps = 1;
@@ -46,11 +47,11 @@ for s = 1:numscripts
 end
 
 %% Graph results
-bar(categorical(scripts), averages);
+bar(categorical(scripts, scripts), averages);
 title('Average Duration (s)');
 set(gca,'TickLabelInterpreter','none')
 figure;
-bar(categorical(scripts), speedup, 'r');
+bar(categorical(scripts, scripts), speedup, 'r');
 title('Speedup vs first script');
 set(gca,'TickLabelInterpreter','none')
 

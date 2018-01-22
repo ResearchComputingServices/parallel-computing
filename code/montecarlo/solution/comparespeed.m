@@ -47,11 +47,11 @@ for s = 1:numscripts
 end
 
 %% Graph results
-bar(categorical(scripts), averages);
+bar(categorical(scripts, scripts), averages);
 title('Average Duration (s)');
 set(gca,'TickLabelInterpreter','none')
 figure;
-bar(categorical(scripts), speedup, 'r');
+bar(categorical(scripts, scripts), speedup, 'r');
 title('Speedup vs first script');
 set(gca,'TickLabelInterpreter','none')
 
