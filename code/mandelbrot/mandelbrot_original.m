@@ -9,18 +9,19 @@ x = linspace( xlim(1), xlim(2), gridSize );
 y = linspace( ylim(1), ylim(2), gridSize );
 [xGrid,yGrid] = meshgrid( x, y );
 z0 = xGrid + 1i*yGrid;
-count = ones( size(z0) );
-z = zeros(gridSize);
 
 % Calculate
-parfor ii = 1:gridSize
+ipos = 1;
+for ii = 1:gridSize
+    count(ii,:) = ones(1,size(z0,2));
     for jj = 1:gridSize
-        z(ii,jj) = z0(ii,jj);
-        while count(ii,jj) < maxIterations && abs(z(ii,jj))<=2
-            z(ii,jj) = z(ii,jj)*z(ii,jj) + z0(ii,jj);
+        z(ipos,jj) = z0(ii,jj);
+        while count(ii,jj) < maxIterations && abs(z(ipos,jj))<=2
+            z(ipos,jj) = z(ipos,jj)*z(ipos,jj) + z0(ii,jj);
             count(ii,jj) = count(ii,jj)+1;
         end
     end
+    ipos = ipos + 1;
 end
 count = log( count );
 
@@ -31,5 +32,5 @@ fig.Position = [200 200 600 600];
 imagesc( x, y, count );
 colormap(fig, [flipud(autumn()); 0 0 0] );
 axis off
-title( sprintf( '%1.2fsecs (fixthis)', cpuTime ) );
+title( sprintf( '%1.2fsecs (sequential)', cpuTime ) );
 cpuTime

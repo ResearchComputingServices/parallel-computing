@@ -4,9 +4,9 @@ end
 
 maxIterations = 1000;
 gridSize = 2000;
-xlim = [-0.748766713922161, -0.748766707771757];
-ylim = [ 0.123640844894862,  0.123640851045266];
-
+xlim = [-0.744277119204761 -0.742029680722771];
+ylim = [-0.140529505375656 -0.138282066893665];
+  
 % Setup
 t = tic();
 x = linspace( xlim(1), xlim(2), gridSize );
@@ -34,7 +34,7 @@ if MANDELBROT_VISUAL
     fig = figure;
     fig.Position = [200 200 600 600];
     imagesc( x, y, count );
-    colormap( [jet();flipud( jet() );0 0 0] );
+    colormap(fig, [flipud(autumn()); 0 0 0] );
     axis off
     title( sprintf( '%1.2fsecs (parallel)', cpuTime ) );
     cpuTime

@@ -3,7 +3,7 @@
 % compare the relative speeds of the scripts.
 
 addpath '..';
-scripts = {'mandelbrot_fixthis', 'mandelbrot_sequential', 'mandelbrot_parallel', 'mandelbrot_vectorized'};
+scripts = {'mandelbrot_sequential', 'mandelbrot_parallel', 'mandelbrot_vectorized'};
 
 % Number of timing repetitions for each script
 reps = 1;
