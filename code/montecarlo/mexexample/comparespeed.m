@@ -3,10 +3,10 @@
 % compare the relative speeds of the scripts.
 
 addpath '..';
-scripts = {'montecarlo', 'montecarlo_parallel', 'montecarlo_vectorized'};
+scripts = {'montecarlo', 'montecarlo_mex'};
 
 % Number of timing repetitions for each script
-reps = 1;
+reps = 5;
 
 %% Make sure we have a parallel pool ready in case some scripts use parfor
 if isempty(gcp('nocreate'))
