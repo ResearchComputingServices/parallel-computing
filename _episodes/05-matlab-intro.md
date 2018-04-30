@@ -74,7 +74,7 @@ The above code works because each loop iteration is independent.  This means tha
 For example, this loop would not work in parallel.  In particular the value of z(i-1) is used in the loop calculate the value of z(i):
 ~~~
 v = rand(1,1000);
-z = zeros(1,1000)
+z = zeros(1,1000);
 z(1) = 0;
 for i = 2:1000
     if v(i) > z(i-1)
