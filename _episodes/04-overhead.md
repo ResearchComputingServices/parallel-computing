@@ -10,13 +10,6 @@ keypoints:
 - "First key point."
 ---
 
-- Memory
- - e.g. if more memory allocated for parallel version and perhaps swapping occurs
-- Disk
-- Network
-- Communication Overhead
-- Multiple runs to account for "variation" in runtime
-
 ## Communication Overhead ##
 
 When running in parallel, data will need to be shared between processors and at times processors will need to coordinate.  This communication between processors takes extra time, although the amount is very dependent on system details such as the hardware used and low-level implementation of parallel constructs.  Some programming languages have built-in support for parallel programming that hide this additional cost of processor communication, but it is still there.
@@ -31,7 +24,7 @@ Memory access speed is a key component in computer system performance.  This ope
 
 Similarly, if a program has a large amount of data that just fits in RAM, and when going parallel additional local copies of some data are needed for each processor, then it is possible that a parallel code running on a single computer would start to exhaust available RAM.  At this point disk would have to be used as overflow space for RAM, causing the system to slow down.
 
-For computer programs that read or write a lot of data to disk, the speed of that disk is clearly important.  For example, let's say your you have a program tat writes a sequences of large file to disk.  When run in parallel, each processor would try to write its file to disk at the same time.  However, if the disk performance is at maximum capacity saving just one file, the additional requests to save will not run any faster.  In fact, juggling all the requests to disk may even slow the system down a somewhat.
+For computer programs that read or write a lot of data to disk, the speed of that disk is clearly important.  For example, let's say your you have a program that writes a sequences of large file to disk.  When run in parallel, each processor would try to write its file to disk at the same time.  However, if the disk performance is at maximum capacity saving just one file, the additional requests to save will not run any faster.  In fact, juggling all the requests to disk may even slow the system down a somewhat.
 
 For some types of parallel programming, programs can operate across multiple computers to increase the scale of processors available.  Coordinating and communicating across a network is certainly going to slow down performance compared to a parallel program that runs entirely on one system.
 

@@ -10,22 +10,11 @@ keypoints:
 - "First key point."
 ---
 
- - Correct first, fast after
- - Determine section(s) where code takes a long time
-     - time sections of code (we'll show examples in Matlab, but all programming languages have a way to check elapsed time)
- - Fix input so results are reproducible
-     - want to make code faster, but not change the results
-     - choose one input data set
-     - fix seed for random numbers
- - If possible, break apart any dependencies in section(s), then convert code section to parallel
- 
-Until now, we have talked about how fast your program might go if you parallelize it.  But, in general, what steps should you take to actually create a parallel version of your code?
-
-There are a few prerequisites.
-
 ## Don't start yet! ##
 
-When we discuss Matlab in particular, we will go over techniques to actually perform these steps.  But in general, here's a good course of action:
+Until now, we have talked about how fast your program might go if you parallelize it. But, in general, what steps should you take to actually create a parallel version of your code?
+
+There are a few prerequisites that you should consider before parallelizing your code.  When we discuss Matlab in particular, we will go over techniques to actually perform these steps.  But in general, here's a good course of action:
 
  1. Fix inputs so results are reproducible
  1. Get your code working correctly
@@ -36,7 +25,7 @@ When we discuss Matlab in particular, we will go over techniques to actually per
 
 ## Working Code ##
 
-First, it is critical that your code is correct before you try to make it run faster.  And as we mentioned in the last section, you should have a fixed problem that is a size that is large enough to be representative, but not so large that you can test it repeatedly.
+First, it is critical that your code is correct before you try to make it run faster.  The goal is to make the code faster, without changing the code's results.  And as we mentioned in the last section, you should have a fixed problem that is a size that is large enough to be representative, but not so large that you can test it repeatedly.
 
 ## Profile Code ##
 
@@ -48,7 +37,7 @@ If you add code to time sections of your code before running it, you will start 
 
 ## Break Dependencies ##
 
-If you have identified a code loop that takes a long time doing calculations, then you should take a closer look at it.  Each time through a loop is called an iteration.  So if a loop variable ~i~ runs from 1 to N, then there will be N loop iterations.
+If you have identified a code loop that takes a long time doing calculations, then you should take a closer look at it.  Each time through a loop is called an iteration.  So if a loop variable i runs from 1 to N, then there will be N loop iterations.
 
 To run in parallel, each loop iteration must be independent.  Are there any values from variables computed in the previous loop iteration which are used in the current iteration?  If so, is this dependency necessary?  If all loop iterations are independent of each other, then they can run in any order, or run at once on multiple processors.
 
