@@ -1,16 +1,16 @@
 ---
-title: "Matlab: Case Studies"
+title: "MATLAB: Case Studies"
 teaching: 0
 exercises: 0
 questions:
-- "What kind of Matlab code can be paralellized?"
+- "What kind of MATLAB code can be paralellized?"
 objectives:
 - "First objective."
 keypoints:
 - "First key point."
 ---
 
-## Example Matlab parfor
+## Example MATLAB parfor
 
 ### Monte Carlo Illustration
 
@@ -30,15 +30,15 @@ How could we improve the performance of this code?
 
 The code is primarily comprised of one big loop.  Can it be parallelized?  We only have one loop to choose  parfor. Each iteration of the loop has its own temporary x,y values.  The only shared variable is `incircle`, which satisfies classification as a reduction variable, and the loop variable correctly counts the integers.  So each iteration of the loop is in indeed independent.  The code even has tic/toc commands already, so we are all set to convert this to a parallel loop.
 
-Go ahead and rename the `for` statement to a `parfor` statement.  Now let's see whether it goes any faster.  But first, start a Matlab parallel pool.  You may do so using the parpool command you saw previously, or using Matlab's parallel pool menu in the bottom left corner.  Matlab is usually setup to automatically start a parallel pool when needed.  However, our PI calculation doesn't take too long unlike a full-scale problem where the parallel pool startup time would not be significant.  So let's avoid skewing the timing results in our small example by counting the time to start the parallel pool.
+Go ahead and rename the `for` statement to a `parfor` statement.  Now let's see whether it goes any faster.  But first, start a MATLAB parallel pool.  You may do so using the parpool command you saw previously, or using MATLAB's parallel pool menu in the bottom left corner.  MATLAB is usually setup to automatically start a parallel pool when needed.  However, our PI calculation doesn't take too long unlike a full-scale problem where the parallel pool startup time would not be significant.  So let's avoid skewing the timing results in our small example by counting the time to start the parallel pool.
 
 Once the pool is started, run your parallel code.  What speedup did you obtain?
 
 ## Limits of parfor
 
-It is important to reiterate that not all Matlab `for` loops can be converted to `parfor`.
+It is important to reiterate that not all MATLAB `for` loops can be converted to `parfor`.
 
-For example, the prefix sum problem computes the sums of elements up to a particular location in a vector, for every location in the vector.  In Matlab this is called the `cumsum` function.  Our own code to compute this might look like:
+For example, the prefix sum problem computes the sums of elements up to a particular location in a vector, for every location in the vector.  In MATLAB this is called the `cumsum` function.  Our own code to compute this might look like:
 
 ~~~
 n = 20
@@ -53,9 +53,9 @@ V
 ~~~
 {: .source}
 
-There is an dependency for the current prefix sum element on the previous one.  This stops us from being able to use a parfor.  When working on your own projects, it is worthwhile to remember that not all Matlab loops can be parallelized.
+There is an dependency for the current prefix sum element on the previous one.  This stops us from being able to use a parfor.  When working on your own projects, it is worthwhile to remember that not all MATLAB loops can be parallelized.
 
-## Parallel Matlab performance
+## Parallel MATLAB performance
 
 Here is another example of a parallel loop.  This loop obtains appreciable speedup:
 ~~~
@@ -78,11 +78,11 @@ end
 ~~~
 {: .source }
 
-The first loop performs a longer computation within each loop iteration, and only returns a single value from the workers back to the main Matlab process.  On the other hand, the second loop take a relatively long time when sharing more data with the workers.  This is an example of how communication overhead can adversely affect performance of parallel code.
+The first loop performs a longer computation within each loop iteration, and only returns a single value from the workers back to the main MATLAB process.  On the other hand, the second loop take a relatively long time when sharing more data with the workers.  This is an example of how communication overhead can adversely affect performance of parallel code.
 
 For reference: [https://www.mathworks.com/help/distcomp/decide-when-to-use-parfor.html](https://www.mathworks.com/help/distcomp/decide-when-to-use-parfor.html)
 
-## Fixing code for Matlab parfor
+## Fixing code for MATLAB parfor
 
 ![Mandelbrot](../fig/mandelbrot.png)
 

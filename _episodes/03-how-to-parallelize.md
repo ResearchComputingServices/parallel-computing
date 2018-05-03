@@ -14,7 +14,7 @@ keypoints:
 
 Until now, we have talked about how fast your program might go if you parallelize it. But, in general, what steps should you take to actually create a parallel version of your code?
 
-There are a few prerequisites that you should consider before parallelizing your code.  When we discuss Matlab in particular, we will go over techniques to actually perform these steps.  But in general, here's a good course of action:
+There are a few prerequisites that you should consider before parallelizing your code.  When we discuss MATLAB in particular, we will go over techniques to actually perform these steps.  But in general, here's a good course of action:
 
  1. Fix inputs so results are reproducible
  1. Get your code working correctly
@@ -43,4 +43,4 @@ To run in parallel, each loop iteration must be independent.  Are there any valu
 
 ## Measure Improvement ##
 
-We'll look at some examples specific to Matlab later.  For now, let us assume you are able to make a parallel version of your code.  The final step is to time that parallel section and compare it to the original, just to ensure that the new parallel version is in fact helpful.  It is good to keep in mind that the particular computer you test on can affect results, especially the number of available processors.
+We'll look at some examples specific to MATLAB later.  For now, let us assume you are able to make a parallel version of your code.  The final step is to time that parallel section and compare it to the original, just to ensure that the new parallel version is in fact helpful.  It is good to keep in mind that the particular computer you test on can affect results, especially the number of available processors.

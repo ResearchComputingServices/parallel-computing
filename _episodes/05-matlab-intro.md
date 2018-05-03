@@ -1,9 +1,9 @@
 ---
-title: "Matlab: Parallel Programming"
+title: "MATLAB: Parallel Programming"
 teaching: 0
 exercises: 0
 questions:
-- "How can we write parallel programs in Matlab?"
+- "How can we write parallel programs in MATLAB?"
 objectives:
 - "First objective."
 keypoints:
@@ -12,13 +12,13 @@ keypoints:
 
 ## Overview
 
-We have discussed in abstract the principles behind using parallel programming to improve code performance.  Now let us turn to more concrete examples using Matlab.
+We have discussed in abstract the principles behind using parallel programming to improve code performance.  Now let us turn to more concrete examples using MATLAB.
 
-## Starting Matlab Parallel Pool
+## Starting MATLAB Parallel Pool
 
-When Matlab runs parallel code, it needs a parallel pool.  Your main Matlab code starts up a set of workers, that will work simultaneously on any parallel sections in your code.  The main Matlab code assigns work to each of the works, and gathers the results after the parallel section is complete.
+When MATLAB runs parallel code, it needs a parallel pool.  Your main MATLAB code starts up a set of workers, that will work simultaneously on any parallel sections in your code.  The main MATLAB code assigns work to each of the works, and gathers the results after the parallel section is complete.
 
-With its default settings, Matlab will automatically start a parallel pool as needed.  However, it can be explicitly start the parallel pool yourself.  In particular, it allows you to specify how many processor cores you want to use.
+With its default settings, MATLAB will automatically start a parallel pool as needed.  However, it can be explicitly start the parallel pool yourself.  In particular, it allows you to specify how many processor cores you want to use.
 
 For example, to use the 4 cores on a quad-core laptop;
 
@@ -29,7 +29,7 @@ parpool(4);
 
 This can be particularly useful on a shared server, where you do not want to use all of the cores.  You can set a specific number with the parpool command.
 
-In general to ensure you use all processor cores, even on a large server, I would recommend putting these lines at the start of your parallel Matlab code:
+In general to ensure you use all processor cores, even on a large server, I would recommend putting these lines at the start of your parallel MATLAB code:
 
 ~~~
 if isempty(gcp('nocreate'))
@@ -42,7 +42,7 @@ The gcp (Get Current Pool) command, when passed nocreate, will return a descript
 
 ## Parallel Loops
 
-Matlab has a `parfor` command that works like the usual `for` loop, except the loop runs in parallel.  The main 
+MATLAB has a `parfor` command that works like the usual `for` loop, except the loop runs in parallel.  The main 
 
 Let us look at an example:
 
@@ -90,13 +90,13 @@ For reference, see [https://www.mathworks.com/help/distcomp/ensure-that-parfor-l
 
 ## Variable Classification
 
-Matlab classifies all variables used in a parallel for loop into categories.  Let's take a look at the different kinds of classifications.  We will use the example [code/classification.m](../code/classification.m)
+MATLAB classifies all variables used in a parallel for loop into categories.  Let's take a look at the different kinds of classifications.  We will use the example [code/classification.m](../code/classification.m)
 
 For reference, see [https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html](https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html)
 
 ### Temporary Variables
 
-Temporary variables are private to a loop iteration and will not be used outside the parallel loop, or in any other loop iteration.  Matlab determines that a variable inside a parfor is temporary if it is initialized to a value inside the loop.
+Temporary variables are private to a loop iteration and will not be used outside the parallel loop, or in any other loop iteration.  MATLAB determines that a variable inside a parfor is temporary if it is initialized to a value inside the loop.
 
 ![Example of Temporary Variable](../fig/parfor_classification_temporary.svg)
 
@@ -116,7 +116,7 @@ Sliced variables are vectors (or matrices) that are sized to have an element (or
 
 ![Example of Sliced Variable](../fig/parfor_classification_sliced.svg)
 
-The indexing into a sliced variable must be kept simple, so that Matlab can be assured that each loop iteration is indeed writing values to distinct locations.  Matlab gives each worker just its slice of the variable, so that the entire variable does not need to be shared, which saves some time and memory.
+The indexing into a sliced variable must be kept simple, so that MATLAB can be assured that each loop iteration is indeed writing values to distinct locations.  MATLAB gives each worker just its slice of the variable, so that the entire variable does not need to be shared, which saves some time and memory.
 
 ### Broadcast Variables
 
@@ -161,15 +161,15 @@ parfor result: 180
 
 ## Transparency
 
-Since Matlab needs to be able to inspect the variables in a parfor loop before running it, there are restrictions on what commands can be used inside the parallel loop.  These restrictions are called parallel transparency.  In particular, commands like `save`/`load`, `clear`, and `eval` cannot be used.  These commands modify Matlab's workspace variables, making it difficult for Matlab to determine what variables may be changing.
+Since MATLAB needs to be able to inspect the variables in a parfor loop before running it, there are restrictions on what commands can be used inside the parallel loop.  These restrictions are called parallel transparency.  In particular, commands like `save`/`load`, `clear`, and `eval` cannot be used.  These commands modify MATLAB's workspace variables, making it difficult for MATLAB to determine what variables may be changing.
 
-One useful workaround is to put some of the parallel loop's code in a function.  Code inside a function does not need to be transparent. A Matlab function has its own variable workspace, so it does not affect the shared parallel workspace used in the parallel loop iterations.
+One useful workaround is to put some of the parallel loop's code in a function.  Code inside a function does not need to be transparent. A MATLAB function has its own variable workspace, so it does not affect the shared parallel workspace used in the parallel loop iterations.
 
 For reference, see [https://www.mathworks.com/help/distcomp/transparency.html](https://www.mathworks.com/help/distcomp/transparency.html)
 
-## Timing Matlab code
+## Timing MATLAB code
 
-We have mentioned that a very important point is to figure out which part of your code takes a long time.  Matlab provides the `tic` and `toc` commands to do this.  You just need to put a `tic` command where you want to start timing, and a `toc` command where you want to stop timing.  The `toc` command will print out how long the code between these commands took.  For example:
+We have mentioned that a very important point is to figure out which part of your code takes a long time.  MATLAB provides the `tic` and `toc` commands to do this.  You just need to put a `tic` command where you want to start timing, and a `toc` command where you want to stop timing.  The `toc` command will print out how long the code between these commands took.  For example:
 
 ~~~
 tic
@@ -189,15 +189,15 @@ Elapsed time is 18.636459 seconds.
 
 It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, make sure to add semicolons to most lines and not too many command window output commands such as `fprintf` or `display`.
 
-Another way to find the slow parts in your code is the Matlab profiler.  When you run code with the profiler enabled, Matlab tracks the amount of time spent in each function, and each line of code.  You can then generate a report that shows which lines are taking the most time. Details on using the Matlab profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
+Another way to find the slow parts in your code is the MATLAB profiler.  When you run code with the profiler enabled, MATLAB tracks the amount of time spent in each function, and each line of code.  You can then generate a report that shows which lines are taking the most time. Details on using the MATLAB profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
 
 ## Parallel Random Number Generation
 
-Random number generators create numbers from a particular sequence.  When running it parallel, it would be difficult and slow to share one random number sequence among workers.  Instead, Matlab automatically sets up a distinct random number sequence for each worker.
+Random number generators create numbers from a particular sequence.  When running it parallel, it would be difficult and slow to share one random number sequence among workers.  Instead, MATLAB automatically sets up a distinct random number sequence for each worker.
 
 Most of the time, this is exactly what you need.  However, if you are testing your code and want to see that the parallel version still gives correct results, then it is important to fix the random number sequence to a specific random seed.
 
-To do this in parallel Matlab:
+To do this in parallel MATLAB:
 
 ~~~
 SEED = 100;

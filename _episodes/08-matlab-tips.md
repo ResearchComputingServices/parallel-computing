@@ -1,5 +1,5 @@
 ---
-title: "Matlab: Best Practices"
+title: "MATLAB: Best Practices"
 teaching: 0
 exercises: 0
 questions:

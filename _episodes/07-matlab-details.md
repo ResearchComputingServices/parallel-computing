@@ -1,9 +1,9 @@
 ---
-title: "Matlab: Vectorization"
+title: "MATLAB: Vectorization"
 teaching: 0
 exercises: 0
 questions:
-- "How does vectorization work in Matlab?"
+- "How does vectorization work in MATLAB?"
 objectives:
 - "First objective."
 keypoints:
@@ -13,11 +13,11 @@ keypoints:
 
 ## What is Vectorization?
 
-Another technique for improving Matlab code performance is vectorization.  This is a large subject, and we will only scratch the surface in this lesson.
+Another technique for improving MATLAB code performance is vectorization.  This is a large subject, and we will only scratch the surface in this lesson.
 
-Many operators and functions in Matlab can be applied to an entire matrix.  This can replace loops that apply the operations to each matrix element individually.  The resulting vectorized code can be more compact, making it easier to read.  Also it is usually fast because Mathworks implements highly optimized vectorized operations.  In fact, Matlab will implicitly run some vectorized operations in parallel to use more than one CPU core without the need for an explicit `parfor` statement.
+Many operators and functions in MATLAB can be applied to an entire matrix.  This can replace loops that apply the operations to each matrix element individually.  The resulting vectorized code can be more compact, making it easier to read.  Also it is usually fast because Mathworks implements highly optimized vectorized operations.  In fact, MATLAB will implicitly run some vectorized operations in parallel to use more than one CPU core without the need for an explicit `parfor` statement.
 
-The way that Matlab creates parallel workers for vectorized matrix operations is different than how `parfor` works.  The vectorized parallel workers are threaded, which allows workers to share data in variables without making copies of it.
+The way that MATLAB creates parallel workers for vectorized matrix operations is different than how `parfor` works.  The vectorized parallel workers are threaded, which allows workers to share data in variables without making copies of it.
 
 On the other hand, vectorizing code is limited to operations that can be performed on a matrix instead of individual elements in a for loop.  It can be difficult to use this approach with complex loops that often do not lend themselves to vectorization.  It also requires temporary data to be stored in large matrices, rather than being generated inside a loop and immediately thrown away.  This can affect memory requirements and potentially performance as well.
 
@@ -57,11 +57,11 @@ The drawback with this approach is that all the `N` random points must be genera
 
 ## Disable Parallel Vectorization
 
-Many of Matlab's vectorized operations automatically make use of parallel processing for large matrices.  This can make efficient use of all cores, in which case you don't need to do any more work to use multiple processor cores.
+Many of MATLAB's vectorized operations automatically make use of parallel processing for large matrices.  This can make efficient use of all cores, in which case you don't need to do any more work to use multiple processor cores.
 
-However, in a few cases vectorization will use multiple cores without gaining much speedup.  Or even if you do gain performance from parallel vectorized computation, you might be interested to see how much performance comes from using multiple cores.  You can test how fast your code runs on only one core by starting Matlab using the the *-singleCompThread* option.
+However, in a few cases vectorization will use multiple cores without gaining much speedup.  Or even if you do gain performance from parallel vectorized computation, you might be interested to see how much performance comes from using multiple cores.  You can test how fast your code runs on only one core by starting MATLAB using the the *-singleCompThread* option.
 
-You could compare your Matlab code with a single computational core to the default with multiple cores to determine speedup from this feature.  And inside a `parfor` loop, vectorized operations will not be in turn parallelized.  So this will affect speedup you see if you parallelize a loop containing computationally intensive vector operations.
+You could compare your MATLAB code with a single computational core to the default with multiple cores to determine speedup from this feature.  And inside a `parfor` loop, vectorized operations will not be in turn parallelized.  So this will affect speedup you see if you parallelize a loop containing computationally intensive vector operations.
 
-From a Windows Command Prompt or a Linux terminal, you may run the command `matlab -singleCompThread` to use Matlab without multithreaded vectorized operations.  From a Mac you need to open a terminal, and run Matlab using the full folder path to Matlab, which varies on the particular version. For example on my Macbook I would disable parallel vector operations by starting Matlab using `/Applications/MATLAB_R2017a.app/bin/matlab -singleCompThread`.
+From a Windows Command Prompt or a Linux terminal, you may run the command `matlab -singleCompThread` to use MATLAB without multithreaded vectorized operations.  From a Mac you need to open a terminal, and run MATLAB using the full folder path to MATLAB, which varies on the particular version. For example on my Macbook I would disable parallel vector operations by starting MATLAB using `/Applications/MATLAB_R2017a.app/bin/matlab -singleCompThread`.
 
