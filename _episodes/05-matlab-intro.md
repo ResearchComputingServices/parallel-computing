@@ -16,9 +16,9 @@ We have discussed in abstract the principles behind using parallel programming t
 
 ## Starting MATLAB Parallel Pool
 
-When MATLAB runs parallel code, it needs a parallel pool.  Your main MATLAB code starts up a set of workers, that will work simultaneously on any parallel sections in your code.  The main MATLAB code assigns work to each of the works, and gathers the results after the parallel section is complete.
+When MATLAB runs parallel code, it needs a parallel pool.  Your main MATLAB code starts up a set of workers that will work simultaneously on any parallel sections in your code.  The main MATLAB code assigns work to each of the workers and gathers results after the parallel section is complete.
 
-With its default settings, MATLAB will automatically start a parallel pool as needed.  However, it can be explicitly start the parallel pool yourself.  In particular, it allows you to specify how many processor cores you want to use.
+With its default settings, MATLAB will automatically start a parallel pool as needed.  However, it can be explicitly start the parallel pool yourself.  In particular, it allows you to specify how many processor cores you want to use. This can be particularly useful on a shared server, where you do not want to use all of the cores.
 
 For example, to use the 4 cores on a quad-core laptop;
 
@@ -27,7 +27,6 @@ parpool(4);
 ~~~
 {: .source }
 
-This can be particularly useful on a shared server, where you do not want to use all of the cores.  You can set a specific number with the parpool command.
 
 In general to ensure you use all processor cores, even on a large server, I would recommend putting these lines at the start of your parallel MATLAB code:
 
@@ -38,40 +37,38 @@ end
 ~~~
 {: .source }
 
-The gcp (Get Current Pool) command, when passed nocreate, will return a description of the current parallel pool.  If none has started yet, it returns nothing, i.e. an empty value.  So if no parallel pool exists yet, this code will run the parpool command to initialize a pool.  It is passed in the number of processor cores that exist on your computer.
+The gcp (Get Current Pool) command will return a description of the current parallel pool and is able to start the pool if none exists.  With the 'nocreate' option, gcp only indicates whether a pool exists yet.  So if a parallel pool is not started, then this code will run the parpool command to initialize a pool using the number of cores in the computer.
 
 ## Parallel Loops
 
-MATLAB has a `parfor` command that works like the usual `for` loop, except the loop runs in parallel.  The main 
+MATLAB has a `parfor` command that works like the usual `for` loop, except the loop runs in parallel.  This allows for a familiar programming style when writing parallel code.  The `parfor` command will be the focus of our discussion on parallel programming in MATLAB.
 
-Let us look at an example:
-
+Let us look at the example [code/parallel_fast/spectral_radius.m](../code/parallel_fast/spectral_radius.m):
 ~~~
-S = zeros(numHands, numPlayers);
-for i = 1:numPlayers
-   S(:, i) = pctdemo_task_blackjack(numHands, i);
+for i = 1:n
+    a(i) = max(abs(eig(rand(A))));
 end
 ~~~
 {: .source }
 
-This loop executes the function `pctdemo_task_blackjack`.  It does this `N` times;  we call each time a loop iteration.  To run this in parallel we need to change the `for` to a `parfor`:
+To convert the code to parallel we just switch to the `parfor` statement, and the loop's iterations will run in parallel [code/parallel_fast/spectral_radius_parallel.m](../code/parallel_fast/spectral_radius_parallel.m):
+
 
 ~~~
-S = zeros(numHands, numPlayers);
-parfor i = 1:numPlayers
-   S(:, i) = pctdemo_task_blackjack(numHands, i);
+parfor i = 1:n
+    a(i) = max(abs(eig(rand(A))));
 end
 ~~~
 {: .source }
 
 
-In this case, the conversion to parfor was easy.  However, there are more details to look at to be able to successfully use parallel loops.
+In this case the conversion to parfor was easy.  However, there are more details to look at to be able to successfully use parallel loops for other cases.
 
 ## Loop Independence
 
-The above code works because each loop iteration is independent.  This means that values calculated in a previous iteration are not required in future iterations.  This independence is necessary otherwise only one iteration could run at a time, with others waiting on results.  So loops either must be independent, or you must be able to make them so in order to use parallel for loops.
+The above code works because each loop iteration is independent.  This means that values calculated in a prior iteration are not required in subsequent iterations.  This independence is necessary otherwise only one iteration could run at a time, with others waiting on results.  So loops either must be independent in order to use parallel for loops.
 
-For example, this loop would not work in parallel.  In particular the value of z(i-1) is used in the loop calculate the value of z(i):
+For example, this loop would not work in parallel.  In particular the value of z(i-1) is used in the loop to calculate the value of z(i):
 ~~~
 v = rand(1,1000);
 z = zeros(1,1000);
@@ -90,7 +87,7 @@ For reference, see [https://www.mathworks.com/help/distcomp/ensure-that-parfor-l
 
 ## Variable Classification
 
-MATLAB classifies all variables used in a parallel for loop into categories.  Let's take a look at the different kinds of classifications.  We will use the example [code/classification.m](../code/classification.m)
+MATLAB classifies all variables used in a parallel for loop into categories.  Let's take a look at the different kinds of classifications.  We will use the example [code/small/classification.m](../code/small/classification.m)
 
 For reference, see [https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html](https://www.mathworks.com/help/distcomp/troubleshoot-variables-in-parfor-loops.html)
 
@@ -100,7 +97,7 @@ Temporary variables are private to a loop iteration and will not be used outside
 
 ![Example of Temporary Variable](../fig/parfor_classification_temporary.svg)
 
-In the above code example, the variable ~T~ is set to an 1XN vectir.  Note that the entire variable is being assigned a vector.  To be considered a temporary variable, it is not enough to set just some elements in the array, for example this is *not* sufficient: `INCORRECT(i,:) = zeros(1,N);`
+In the above code example, the variable `T` is set to a 1 by N vector.  Note that the entire variable is being assigned a vector.  To be considered a temporary variable, it is not enough to set just some elements in the array, for example this is *not* sufficient: `INCORRECT(i,:) = zeros(1,N);`
 
 Other loop variables are used in some way before and after the loop.  They all must be initialized before the loop starts to differentiate them from temporary variables.
 
@@ -129,7 +126,7 @@ In this code example, `B` is a broadcast variable.
 ### Reduction Variables
 
 
-A reduction variable is a useful way to get a summary value from a parallel loop.  It is the result of some operation that combines values in each loop iteration.  It is a variable that is shared between loop iteration.  However, the operation that updates the variable should be associated.  That is, the order in which the variable is updated shouldn't affect the result, since parallel loop iterations do not complete in a deterministic order.
+A reduction variable is a useful way to get a summary value from a parallel loop.  It is the result of some operation that combines values in each loop iteration.  It is a variable that is shared between loop iterations.  However, the operation that updates the variable should be associative.  That is, the order in which the variable is updated shouldn't affect the result, since parallel loop iterations do not complete in a deterministic order.
 
 For example, `R` is a reduction variable in this example:
 
@@ -161,7 +158,7 @@ parfor result: 180
 
 ## Transparency
 
-Since MATLAB needs to be able to inspect the variables in a parfor loop before running it, there are restrictions on what commands can be used inside the parallel loop.  These restrictions are called parallel transparency.  In particular, commands like `save`/`load`, `clear`, and `eval` cannot be used.  These commands modify MATLAB's workspace variables, making it difficult for MATLAB to determine what variables may be changing.
+Since MATLAB needs to be able to inspect the variables in a parfor loop before running the loop, there are restrictions on what commands can be used inside the parallel loop.  These restrictions are called parallel transparency.  In particular, commands like `save`/`load`, `clear`, and `eval` cannot be used.  These commands modify MATLAB's workspace variables, making it difficult for MATLAB to determine what variables may be changing.
 
 One useful workaround is to put some of the parallel loop's code in a function.  Code inside a function does not need to be transparent. A MATLAB function has its own variable workspace, so it does not affect the shared parallel workspace used in the parallel loop iterations.
 
@@ -169,7 +166,7 @@ For reference, see [https://www.mathworks.com/help/distcomp/transparency.html](h
 
 ## Timing MATLAB code
 
-We have mentioned that a very important point is to figure out which part of your code takes a long time.  MATLAB provides the `tic` and `toc` commands to do this.  You just need to put a `tic` command where you want to start timing, and a `toc` command where you want to stop timing.  The `toc` command will print out how long the code between these commands took.  For example:
+As mentioned, it is important to figure out which parts of your code take a long time.  MATLAB provides the `tic` and `toc` commands to do this.  You just need to put a `tic` command where you want to start timing, and a `toc` command where you want to stop timing.  The `toc` command will print out how long the code between these commands took.  For example, let's return to [code/parallel_fast/spectral_radius.m](../code/parallel_fast/spectral_radius.m):
 
 ~~~
 tic
@@ -187,17 +184,15 @@ Elapsed time is 18.636459 seconds.
 ~~~
 {: .output }
 
-It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, make sure to add semicolons to most lines and not too many command window output commands such as `fprintf` or `display`.
+It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, make sure to add semicolons to most lines and avoid frequent use of output commands such as `fprintf` or `display`.
 
-Another way to find the slow parts in your code is the MATLAB profiler.  When you run code with the profiler enabled, MATLAB tracks the amount of time spent in each function, and each line of code.  You can then generate a report that shows which lines are taking the most time. Details on using the MATLAB profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
+Another way to find the slow parts in your code is with the MATLAB profiler.  When you run code with the profiler enabled, MATLAB tracks the amount of time used by each line of code.  You can then generate a report showing which lines are take the most time. Details on using the MATLAB profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
 
 ## Parallel Random Number Generation
 
-Random number generators create numbers from a particular sequence.  When running it parallel, it would be difficult and slow to share one random number sequence among workers.  Instead, MATLAB automatically sets up a distinct random number sequence for each worker.
+Random number generators produce numbers from a particular sequence.  When running in parallel, it would be difficult and slow to share one random number sequence among workers.  Instead, MATLAB automatically sets up a distinct random number sequence for each worker.
 
-Most of the time, this is exactly what you need.  However, if you are testing your code and want to see that the parallel version still gives correct results, then it is important to fix the random number sequence to a specific random seed.
-
-To do this in parallel MATLAB:
+Each time you run your code, the workers' random number sequences will be different. Most of the time, this is exactly what you need.  However, if you are testing your code and want to see that the parallel version still gives correct results, then it is important to fix the random number sequence to a specific random seed.  This will provide the same random numbers on repeated runs, both with `parfor` and `for`:
 
 ~~~
 SEED = 100;

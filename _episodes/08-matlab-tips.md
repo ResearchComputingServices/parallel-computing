@@ -12,18 +12,21 @@ keypoints:
 
 ## Overview
 
-Emphasis in this workshop is on parallel computing.  Parallelism is great for fully utilizing hardware - it is how you can speed up already "tuned" code to go beyond what you can do on your laptop.  The point of parallel computing is to improve your code's performance.  Because clock speed is not going up (i.e. CPU cores are not getting faster), we need to make efficient use of multicore hardware to achieve performance gains.
+Emphasis in this workshop is on parallel computing.  Parallelism is great for using all your processor cores. With parallelism, you can speed up already "tuned" code to go beyond what you can do on your laptop.  The point of parallel computing is to improve your code's performance.  Because clock speed is not going up (i.e. CPU cores are not getting faster), we need to make efficient use of multicore hardware to achieve performance gains.
 
-However, it is also worth mentioned the different methods used to tune code before parallelism must be used.  Mathworks in fact recommends a few different techniques to improve MATLAB code performance.  These techniques are preallocation, vectorization, parallelization, and loop constants.
+However, it is also worth noting tricks that can speed up your code before parallelizing.  Mathworks in fact recommends a few different techniques to improve MATLAB code performance.  These techniques are preallocation, vectorization, parallelization, and loop constants.
 
 
 ## Preallocation
 
-In MATLAB, variables do not have to be declared.  If you are saving into a matrix into a row or column that doesn't yet exist, then MATLAB will grow the size of the Matrix.  Under the hood, MATLAB actually has to create a new matrix in RAM and copy the data across from the old, smaller memory area.  So if, for example, you do this repeatedly in a loop :
+In MATLAB, variables do not have to be declared.  If you are saving into a matrix's row or column that doesn't yet exist, then MATLAB will grow the size of the matrix.  Under the hood, MATLAB actually has to create a new matrix in RAM and copy the data to it from the previous, smaller matrix.  If a loop writes data to a new row each iteration, then this matrix resize is repeated many times, and can greatly effect performance.
+
+You can avoid this performance problem by first creating an empty matrix large enough for all your data - this is called *preallocation*.  For example, let's run this code [code/small/bestpractice_preallocate.m](../code/small/bestpractice_preallocate.m):
 
 ~~~
-clear;
-N = 3E5;
+N = 2E5;
+
+clear A;
 tic;
 for i = 1:N
     A(i,:) = rand(1,4);
@@ -32,13 +35,14 @@ fprintf('Time without preallocation: %f seconds\n', toc);
 ~~~
 {: .source}
 ~~~
-Time without preallocation: 27.711114 seconds
+Time without preallocation: 12.282884 seconds
 ~~~
 {: .output }
 
 ~~~
-clear;
-N = 3E5;
+N = 2E5;
+
+clear A;
 tic;
 A = zeros(N, 4);
 for i = 1:N
@@ -48,7 +52,7 @@ fprintf('Time with preallocation: %f seconds\n', toc);
 ~~~
 {: .source}
 ~~~
-Time with preallocation: 0.193926 seconds
+Time with preallocation: 0.166861 seconds
 ~~~
 {: .output }
 
@@ -97,7 +101,7 @@ For reference, see [https://www.mathworks.com/help/matlab/matlab_prog/vectorizat
 
 ## Parallelization
 
-As we have seen with parfor, MATLAB has commands that allow you to explicitly break apart work into separate pieces to run at once.  MATLAB has other advanced parallel programming constructions.  For example, parfeval calls a function in parallel across multiple inputs.  The spmd command runs one task for each worker processor and can even exchange data between tasks.  These additional MATLAB parallelization techniques are out of scope of this workshop and will not be discussed in detail.
+As we have seen with parfor, MATLAB has commands that allow you to explicitly break apart work into separate pieces to run at once.  MATLAB has other advanced parallel programming constructs.  For example, parfeval calls a function in parallel across multiple inputs.  Also, the spmd command runs one task for each worker and allows you to explicitly exchange data between workers.  These additional MATLAB parallelization techniques are out of scope of this workshop and will not be discussed in detail.
 
 ## MATLAB MEX Compilation
 
