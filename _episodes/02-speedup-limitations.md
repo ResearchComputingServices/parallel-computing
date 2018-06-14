@@ -44,7 +44,7 @@ Using this equation, here is what happens to speedup as you increase the number 
 
 ![Pseudocode Speedup Limit](../fig/speedup.svg)
 
-So on 2 processors, the parallel program should take 46 seconds.  On 10 processors, 22 seconds.  If it were possible to keep on going, on one thousand processors, 16 seconds.  On one million processors, still around 16 seconds.
+So on 2 processors, the parallel program should take 46 minutes.  On 10 processors, 22 minutes.  If it were possible to keep on going, on one thousand processors, 16 minutes.  On one million processors, still around 16 minutes.
 
 As this graph demonstrates, there are only so many processors that would be worth assigning to a particular program, as there are diminishing returns with larger numbers of processors.
 
