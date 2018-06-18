@@ -184,7 +184,7 @@ Elapsed time is 18.636459 seconds.
 ~~~
 {: .output }
 
-It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, make sure to add semicolons to most lines and avoid frequent use of output commands such as `fprintf` or `display`.
+It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, silence MATLAB commands by ending them with semicolons, and avoid frequent use of output commands such as `fprintf` or `display`.
 
 Another way to find the slow parts in your code is with the MATLAB profiler.  When you run code with the profiler enabled, MATLAB tracks the amount of time used by each line of code.  You can then generate a report showing which lines are take the most time. Details on using the MATLAB profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
 
@@ -205,3 +205,7 @@ parfor ii = 1:N
 end
 ~~~
 {: .source }
+
+This code will set the random number stream to a specific seed, and give each iteration of the loop its own substream.  The substreams are statistically independent of each other.  A substream is fixed for a given loop iteration, which ensures random numbers are repeatable for that iteration even though parfor runs iterations in an arbitrary order.
+
+For more information, see [http://www.mathworks.com/help/distcomp/repeat-random-numbers-in-parfor-loops.html](http://www.mathworks.com/help/distcomp/repeat-random-numbers-in-parfor-loops.html)
