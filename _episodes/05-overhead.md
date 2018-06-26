@@ -1,6 +1,6 @@
 ---
 title: "Hardware bottlenecks and overhead"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
 - "What else slows me down?"

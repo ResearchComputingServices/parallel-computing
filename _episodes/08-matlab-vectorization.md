@@ -1,6 +1,6 @@
 ---
 title: "MATLAB: Vectorization"
-teaching: 0
+teaching: 20
 exercises: 0
 questions:
 - "How does vectorization work in MATLAB?"

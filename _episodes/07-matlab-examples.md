@@ -1,7 +1,7 @@
 ---
 title: "MATLAB: Case Studies"
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 10
 questions:
 - "What kind of MATLAB code can be paralellized?"
 objectives:

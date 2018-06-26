@@ -1,6 +1,6 @@
 ---
 title: "MATLAB: Parallel Programming"
-teaching: 0
+teaching: 20
 exercises: 0
 questions:
 - "How can we write parallel programs in MATLAB?"

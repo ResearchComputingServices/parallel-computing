@@ -1,6 +1,6 @@
 ---
 title: "Parallel vs Sequential Computing"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
 - "What is Parallel Computing?"

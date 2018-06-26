@@ -1,6 +1,6 @@
 ---
 title: "Limitations of Parallel Speedup"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
 - "How fast can I go?"

@@ -1,6 +1,6 @@
 ---
 title: "Types of Parallel Workers"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
 - "How is parallelism implemented?"

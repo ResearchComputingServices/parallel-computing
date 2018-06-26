@@ -1,6 +1,6 @@
 ---
 title: "MATLAB: Best Practices"
-teaching: 0
+teaching: 10
 exercises: 0
 questions:
 - "What guidelines are there for improving MATLAB code performance?"
