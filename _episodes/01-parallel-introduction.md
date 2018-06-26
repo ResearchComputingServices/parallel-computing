@@ -28,6 +28,11 @@ This continual increase in computer performance is often termed Moore's Law.  Mo
 
 The increasing capability in computer processors drove ever faster processors.  However, ever faster processors are no longer feasible since manufacturers have come up against the physical limitations of CPU manufacturing.  Instead, chip manufacturers have refocused on multi-core chips.  Instead of trying to create faster processor cores, they are making more cores in one physical processor chip.  The laptop or desktop you are working on now probably has around 4 cores in it.  The servers we use in Carleton's Research and Development Cloud can have up to 32 cores.  And even more cores exist elsewhere on clusters, where programs are written that span multiple computers across a local network.
 
+![Processor performance over time](../fig/42-years-processor-trend.svg)
+
+*Image courtesy of [Karl Rupp](https://www.karlrupp.net/2018/02/42-years-of-microprocessor-trend-data/)*
+{: .text-center }
+
 However, only certain problems can be solved in parallel across multiple cores, and it does require some extra programming effort. In this workshop, we will talk about the conceptual differences between sequential and parallel programming, discuss when to expect performance improvements from converting to parallel code, and as an example apply these concepts to MATLAB code.
 
 ## Using cores: Parallel vs Sequential Batch
