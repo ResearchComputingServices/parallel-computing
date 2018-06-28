@@ -14,7 +14,7 @@
    viewBox="0 0 210 80"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.1 r15371"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="parfor_classification_reduction.svg">
   <defs
      id="defs2">
@@ -84,15 +84,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="263.6361"
+     inkscape:cx="137.92181"
      inkscape:cy="173.10375"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1090"
+     inkscape:window-height="1091"
      inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      units="cm" />
   <metadata
@@ -168,27 +168,25 @@
          x="63.867352"
          y="261.4014"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:5.23698282px;font-family:monospace;-inkscape-font-specification:'monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
-         id="tspan4841"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.26184914;stroke-opacity:1"
-   id="tspan4851">parfor</tspan> i = 1:N</tspan><tspan
+         id="tspan4841">       i = 1:N</tspan><tspan
          sodipodi:role="line"
          x="63.867352"
-         y="269.85681"
+         y="269.58932"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
          id="tspan4843">    T = rand(1,N);</tspan><tspan
          sodipodi:role="line"
          x="63.867352"
-         y="278.31219"
+         y="278.04471"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
          id="tspan4845">    S(i,:) = b * T;</tspan><tspan
          sodipodi:role="line"
          x="63.867352"
-         y="286.76758"
+         y="286.50012"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
          id="tspan4847">    R = R + max(T);</tspan><tspan
          sodipodi:role="line"
          x="63.867352"
-         y="295.22296"
+         y="294.95551"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622889px;font-family:monospace;-inkscape-font-specification:monospace;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.26184914;stroke-opacity:1"
          id="tspan4849">end</tspan></text>
     <flowRoot
@@ -225,5 +223,23 @@
        id="path4617"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.47396564px;line-height:0.78174055;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26184914"
+       x="63.867889"
+       y="246.39989"
+       id="text4833-3"><tspan
+         sodipodi:role="line"
+         x="63.867889"
+         y="253.21463"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622984px;font-family:monospace;-inkscape-font-specification:monospace;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26184914"
+         id="tspan4839-3" /><tspan
+         sodipodi:role="line"
+         x="63.867889"
+         y="261.40256"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:6.54622984px;font-family:monospace;-inkscape-font-specification:monospace;fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.26184914;stroke-opacity:1"
+         id="tspan4849-2">parfor<tspan
+   id="tspan3293"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.28437948px;line-height:5.23698282px;font-family:monospace;-inkscape-font-specification:'monospace, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke-width:0.26184914" /></tspan></text>
   </g>
 </svg>
