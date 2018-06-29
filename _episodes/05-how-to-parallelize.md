@@ -16,22 +16,22 @@ Until now, we have talked about how fast your program might go if you paralleliz
 
 There are a few prerequisites that you should consider before parallelizing your code.  When we discuss MATLAB in particular, we will go over techniques to actually perform these steps.  But in general, here's a good course of action:
 
- 1. Fix inputs so output is reproducible
  1. Get your code working correctly
+ 1. Fix inputs so output is reproducible
  1. Determine section(s) where code take a long time
  1. Analyze data dependencies in these sections
  1. Convert long-running code section(s) to parallel where appropriate
  1. Determine speed of parallel code version
+
+## Working Code ##
+
+It is critical that your code is correct before you try to make it run faster.  The goal should be to make the code faster without changing the code's results, so that you only need to focus on speed not correctness.  And debugging parallel code is more difficult than debugging sequential code.
 
 ## Reproducible Output ##
 
 It is useful to fix your program's input and the size of your problem.  If you feed experimental data into your code, then you want to have a good dataset that is large enough to be representative of your full-scale problem, but not too large to make testing take forever.  The same dataset should be used to check the speed of your parallel code, so you are comparing apples to apples.  Also, it is wise to check that the results you obtain from the parallel code are not just faster, but in fact still the same as the original code!
 
 If you are using randomly generated numbers in your code, it is also important that they are repeatable for accurate performance measurement and to check correctness.  Computers can provide a sequence of pseudo-random numbers.  A random *seed* is used to initialize this sequence.  If you set the seed to a fixed value, then you will be able to check that the results stay the same as you parallelize your code.  When you have multiple processors generating random numbers at the same time, care should be taken to ensure each processor has independent random sequences.  Later, we will show specific examples of how to deal with random numbers in parallel MATLAB.
-
-## Working Code ##
-
-It is critical that your code is correct before you try to make it run faster.  The goal should be to make the code faster without changing the code's results.  And as we mentioned in the last section, you should have a fixed problem size that is large enough to be representative, but not too large so that you can repeatedly test it.
 
 ## Profile Code ##
 
