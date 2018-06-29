@@ -119,7 +119,7 @@ The indexing into a sliced variable must be kept simple, so that MATLAB can be a
 
 A broadcast variable is simply a variable that is read-only inside the loop.  That is, values from the variable are used in the parallel loop, but the variable is never updated inside the loop.  A copy of the entire variable is sent to every worker, which why it is termed a broadcast variable.
 
-In this code example, `B` is a broadcast variable.
+In this code example, `b` is a broadcast variable.
 
 ![Example of Broadcast Variable](../fig/parfor_classification_broadcast.svg)
 
@@ -186,7 +186,7 @@ Elapsed time is 18.636459 seconds.
 
 It is also useful to note that printing a large number of messages to the command window can slow down your program.  So when doing code timings, silence MATLAB commands by ending them with semicolons, and avoid frequent use of output commands such as `fprintf` or `display`.
 
-Another way to find the slow parts in your code is with the MATLAB profiler.  When you run code with the profiler enabled, MATLAB tracks the amount of time used by each line of code.  You can then generate a report showing which lines are take the most time. Details on using the MATLAB profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
+Another way to find the slow parts in your code is with the MATLAB profiler.  When you run code with the profiler enabled, MATLAB tracks the amount of time used by each line of code.  You can then generate a report showing which lines take the most time. Details on using the MATLAB profiler may be found at [https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html](https://www.mathworks.com/help/matlab/matlab_prog/profiling-for-improving-performance.html)
 
 ## Parallel Random Number Generation
 

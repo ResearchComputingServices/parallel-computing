@@ -30,21 +30,21 @@ In subsequent sections, we'll delve into hardware specific details on what can c
 
 | Code Section | Sequential Time | Description |
 | --- | --- | --- |
-| Section 1 | 5 minutes | Initialize |
+| Section 1 | 4 minutes | Initialize |
 | Section 2 | 5 minutes | Read input files |
 | Section 3 | 60 minutes | Compute results |
 | Section 4 | 5 minutes | Output results to file |
 | Section 5 | 1 minutes | Cleanup variables |
 
-Let's say in this program that you are only able to parallelize step 3.  How fast could this program possibly go?
+Let's say in this program that you are only able to parallelize section 3.  How fast could this program possibly go?
 
-We can calculate `T(1) = 5+5+60+5+1 = 76`.  A formula to compute the time in parallel would be `T(p) = 16 + 60/p` since the 60 minutes for section 3 will run in parallel over `p` processors, while the remaining 16 minutes only runs on one processor.
+We can calculate `T(1) = 4+5+60+5+1 = 75`.  A formula to compute the time in parallel would be `T(p) = 15 + 60/p` since the 60 minutes for section 3 will run in parallel over `p` processors, while the remaining 15 minutes only runs on one processor.
 
 Using this equation, here is what happens to speedup as you increase the number of processor cores
 
 ![Pseudocode Speedup Limit](../fig/speedup.svg)
 
-So on 2 processors, the parallel program should take 46 minutes.  On 10 processors, 22 minutes.  If it were possible to keep on going, on one thousand processors, 16 minutes.  On one million processors, still around 16 minutes.
+So on 2 processors, the parallel program should take 45 minutes.  On 10 processors, 21 minutes.  If it were possible to keep on going, on one thousand processors, 15 minutes.  On one million processors, still around 15 minutes.
 
 As this graph demonstrates, there are only so many processors that would be worth assigning to a particular program, as there are diminishing returns with larger numbers of processors.
 
