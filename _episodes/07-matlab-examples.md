@@ -44,7 +44,7 @@ There is an dependency for the current prefix sum element on the previous one.  
 
 ## Parallel MATLAB performance
 
-Here is another example of a parallel loop.  This [fast parallel code](../code/parallel_fast/spectral_radius.m) obtains appreciable speedup vs the original [sequential code](../code/parallel_slow/sinecalc.m):
+Here is another example of a parallel loop.  This [fast parallel code](../code/parallel_fast/spectral_radius_parallel.m) obtains appreciable speedup vs the original [sequential code](../code/parallel_fast/spectral_radius.m):
 ~~~
 n = 200;
 A = 500;
