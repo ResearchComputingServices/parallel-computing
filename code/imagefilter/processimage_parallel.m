@@ -25,5 +25,3 @@ end
 img(:,:,1) = red;
 img(:,:,2) = green;
 img(:,:,3) = blue;
-
-%img = reshape(img, [width, height, 3]);
