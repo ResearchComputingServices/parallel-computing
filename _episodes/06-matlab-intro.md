@@ -66,7 +66,7 @@ In this case the conversion to parfor was easy.  However, there are more details
 
 ## Loop Independence
 
-The above code works because each loop iteration is independent.  This means that values calculated in a prior iteration are not required in subsequent iterations.  This independence is necessary otherwise only one iteration could run at a time, with others waiting on results.  So loops either must be independent in order to use parallel for loops.
+The above code works because each loop iteration is independent.  This means that values calculated in a prior iteration are not required in subsequent iterations.  This independence is necessary otherwise only one iteration could run at a time, with others waiting on results.  So loops must be independent in order to become parallel for loops.
 
 For example, this loop would not work in parallel.  In particular the value of z(i-1) is used in the loop to calculate the value of z(i):
 ~~~
