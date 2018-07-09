@@ -1,7 +1,7 @@
 % Greyscale with yellow highlights
 
-for column = 1:size(img,2)
-    for row = 1:size(img,1)
+for row = 1:size(img,1)
+    for column = 1:size(img,2)
         % Convert this pixel to greyscale
         grey =  (double(img(row,column,1)) + double(img(row,column,2)) + double(img(row,column,3)))/3;
         

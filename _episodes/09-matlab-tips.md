@@ -14,7 +14,7 @@ keypoints:
 
 Emphasis in this workshop is on parallel computing.  Parallelism is great for using all your processor cores. With parallelism, you can speed up already "tuned" code to go beyond what you can do on your laptop.  The point of parallel computing is to improve your code's performance.  Because clock speed is not going up (i.e. CPU cores are not getting faster), we need to make efficient use of multicore hardware to achieve performance gains.
 
-However, it is also worth noting tricks that can speed up your code before parallelizing.  Mathworks in fact recommends a few different techniques to improve MATLAB code performance.  These techniques are preallocation, vectorization, parallelization, and loop constants.
+However, it is also worth noting tricks that can speed up your code before parallelizing.  This includes some tips from Mathworks to improve MATLAB code performance.  These techniques are preallocation, vectorization, parallelization, and loop constants.
 
 
 ## Preallocation
@@ -66,7 +66,7 @@ The idea with this optimization is simple.  If you are computing the same value 
 ~~~
 tic;
 for ii = 1:100
-    A = eig(magic(2000))
+    A = eig(magic(2000));
     % Let's pretend there is more code here...
 end
 toc;
@@ -79,7 +79,7 @@ Elapsed time is 43.479244 seconds.
 
 ~~~
 tic;
-A = eig(magic(2000))
+A = eig(magic(2000));
 for ii = 1:100
     % Let's pretend there is more code here...
 end
@@ -119,3 +119,18 @@ codegen montecarlo
 And when comparing the performance of the original montecarlo to the montecarlo_mex, we obtain this speedup:
 
 ![Monte Carlo MEX Speedup](../fig/speedup_montecarlo_mex.png)
+
+## Column-Major Memory Access
+
+MATLAB stores matrices in column-major format.  This means an array such as:
+
+~~~
+A = [1 2 3; 4 5 6; 7 8 9];
+~~~
+{: .source }
+
+Will be stored in RAM in this order: 1, 4, 7, 2, 5, 8, 3, 6, 9.
+
+If you recall, items close to recently accessed items are cached in the processors to speed up memory access.  So work with columns at a time to improve memory performance.
+
+For example, the code [code/imagefilter/processimage.m](../code/imagefilter/processimage.m) is much than [code/imagefilter/processimage_rowmajor.m](../code/imagefilter/processimage_rowmajor.m).
