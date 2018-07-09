@@ -32,5 +32,5 @@ fig.Position = [200 200 600 600];
 imagesc( x, y, count );
 colormap(fig, [flipud(autumn()); 0 0 0] );
 axis off
-title( sprintf( '%1.2fsecs (sequential)', cpuTime ) );
+title( sprintf( '%1.2fsecs (fixthis)', cpuTime ) );
 cpuTime
