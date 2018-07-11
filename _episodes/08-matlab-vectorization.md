@@ -63,5 +63,5 @@ However, in a few cases vectorization will use multiple cores without gaining mu
 
 You could compare your MATLAB code with a single computational core to the default with multiple cores to determine speedup from this feature.  And inside a `parfor` loop, vectorized operations will not be in turn parallelized.  So this will affect speedup you see if you parallelize a loop containing computationally intensive vector operations.
 
-From a Windows Command Prompt or a Linux terminal, you may run the command `matlab -singleCompThread` to use MATLAB without multithreaded vectorized operations.  From a Mac you need to open a terminal, and run MATLAB using the full folder path to MATLAB, which varies on the particular version. For example on my Macbook I would disable parallel vector operations by starting MATLAB using `/Applications/MATLAB_R2017a.app/bin/matlab -singleCompThread`.
+From a Windows Command Prompt or a Linux terminal, you may run the command `matlab -singleCompThread` to use MATLAB without multi-threaded vectorized operations.  From a Mac you need to open a terminal, and run MATLAB using the full folder path to MATLAB, which varies on the particular version. On one particular Macbook, the command could be `/Applications/MATLAB_R2017a.app/bin/matlab -singleCompThread`.
 

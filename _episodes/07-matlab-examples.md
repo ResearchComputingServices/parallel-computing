@@ -1,6 +1,6 @@
 ---
 title: "MATLAB: Case Studies"
-teaching: 20
+teaching: 30
 exercises: 10
 questions:
 - "What kind of MATLAB code can be paralellized?"
@@ -81,5 +81,3 @@ The code is available at [code/mandelbrot/mandelbrot_fixthis.m](../code/mandelbr
 ![Filter Image Speedup](../fig/speedup_mandelbrot.png)
 
 This example is based on code from [the Mathworks website](https://www.mathworks.com/help/distcomp/examples/illustrating-three-approaches-to-gpu-computing-the-mandelbrot-set.html)
-
-

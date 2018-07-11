@@ -48,7 +48,7 @@ So on 2 processors, the parallel program should take 45 minutes.  On 10 processo
 
 As this graph demonstrates, there are only so many processors that would be worth assigning to a particular program, as there are diminishing returns with larger numbers of processors.
 
-In fact, since speedup is a ratio of the sequential to parallel runtimes, the specific running time doesn't matter when expressing this concept.  This leads us to *Amdahl's Law*: if `k` is the fraction of a sequential code's running time that can be paralellized, then `S(p) = 1/(1-k + k/p)`.
+In fact, since speedup is a ratio of the sequential to parallel runtimes, the specific running time doesn't matter when expressing this concept.  This leads us to *Amdahl's Law*: if `k` is the fraction of a sequential code's running time that can be parallelized, then `S(p) = 1/(1-k + k/p)`.
 
 We can see the effect of varying values of `k` in the following graph.  Even a small section of sequential code imposes a practical limit in parallel programs.
 
