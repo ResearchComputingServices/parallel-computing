@@ -6,7 +6,7 @@ addpath '..';
 scripts = {'montecarlo', 'montecarlo_mex'};
 
 % Number of timing repetitions for each script
-reps = 5;
+reps = 1;
 
 %% Make sure we have a parallel pool ready in case some scripts use parfor
 if isempty(gcp('nocreate'))
