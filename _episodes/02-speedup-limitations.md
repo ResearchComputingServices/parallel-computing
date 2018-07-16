@@ -54,15 +54,11 @@ We can see the effect of varying values of `k` in the following graph.  Even a s
 
 ## Superlinear Speedup
 
-There are, in fact, rare times when you might see *superlinear speedup*.  Speedup is superlinear when `S(p) > p`.
-
-There are various reasons why you might see such speedup.  One is due to additional combined hardware resources in parallel.  The other from changing data access patterns in parallel.
+We had stated that linear speedup, `S(p) = p` is ideal.  However, there are rare times when you might see *superlinear speedup*.  Speedup is superlinear when `S(p) > p`. There are various reasons why you might see such speedup.  One is due to additional total hardware resources when running in parallel.  The other from changing data access patterns in parallel.
 
 There are limited amounts of faster memory attached to each processor called *cache*. Using multiple processors can mean a larger total amount of this faster memory, and perhaps the parallel program can use it more effectively than the smaller amount available to a sequential program.
 
-The usual upper limit of linear speedup assumes that you are using the fastest possible sequential code.  There are certain kinds of code where running time is sensitive to the particular input that the code is working on.
-
-Let's look at the following example.  We are searching for the cell marked with 'X', and we will stop when it is found.  We assume it takes the same amount of time to search each square.
+The usual upper limit of linear speedup assumes that you are using the fastest possible sequential code.  There are certain kinds of code where running time is sensitive to the particular input that the code is working on. Let's look at the following example.  We are searching for the cell marked with 'X', and we will stop when it is found.  We assume it takes the same amount of time to search each square.
 
 ![Superlinear speedup example](../fig/superlinear_all.svg)
 
@@ -72,4 +68,4 @@ Figure (B) shows a sequence using 2 cores.  The 2 cores only have to search 3 ce
 
 Figure (C) shows a sequence using 4 cores.  The answer is found on in the first cell.  This is a speedup of *11/1 = 11* on 4 cores.
 
-This illustrates that for some kinds of problems, you will need to be careful what kind of sample input you use when determine how effective a parallel code is.
+This illustrates that for some kinds of problems, you will need to be careful what kind of sample input you use when determining how effective a parallel code is.
