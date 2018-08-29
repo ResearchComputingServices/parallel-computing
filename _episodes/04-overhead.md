@@ -12,7 +12,7 @@ keypoints:
 
 ## Communication Overhead ##
 
-When running in parallel, data will need to be shared between processors and at times processors will need to coordinate.  This communication between processors add running time, although the amount is very dependent on system details such as the hardware used and low-level implementation of parallel functions.  Some programming languages have built-in support for parallel programming that hide this additional cost of processor communication, but it is still there.
+When running in parallel, data will need to be shared between processors and at times processors will need to coordinate.  This communication between processors adds running time, although the amount is very dependent on system details such as the hardware used and low-level implementation of parallel functions.  Some programming languages have built-in support for parallel programming that hide this additional cost of processor communication, but it is still there.
 
 The amount of overhead is often dependent on how many processors are being used.  So the improvement from increasing the number of processors could be diminished by the increased overhead of more processors working together.
 
