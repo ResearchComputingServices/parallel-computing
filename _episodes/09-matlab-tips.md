@@ -125,12 +125,16 @@ And when comparing the performance of the original montecarlo to the montecarlo_
 MATLAB stores matrices in column-major format.  This means an array such as:
 
 ~~~
-A = [1 2 3; 4 5 6; 7 8 9];
+ans =
+
+     1     2     3
+     4     5     6
+     7     8     9
 ~~~
 {: .source }
 
-Will be stored in RAM in this order: 1, 4, 7, 2, 5, 8, 3, 6, 9.
+will be stored in RAM in this order: 1, 4, 7, 2, 5, 8, 3, 6, 9.
 
-If you recall, items close to recently accessed items are cached in the processors to speed up memory access.  So work with columns at a time to improve memory performance.
+If you recall, items close to other recently accessed items are cached in the processor cores to speed up memory access.  So you should work with columns at a time to improve memory performance.
 
-For example, the code [code/imagefilter/processimage.m](../code/imagefilter/processimage.m) is much than [code/imagefilter/processimage_rowmajor.m](../code/imagefilter/processimage_rowmajor.m).
+For example, the code [code/imagefilter/processimage.m](../code/imagefilter/processimage.m) is faster than [code/imagefilter/processimage_rowmajor.m](../code/imagefilter/processimage_rowmajor.m).
