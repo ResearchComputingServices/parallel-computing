@@ -5,9 +5,12 @@ exercises: 0
 questions:
 - "What is Parallel Computing?"
 objectives:
-- "First objective."
+- "Define parallel computing"
+- "Explain benefit of parallelism"
 keypoints:
-- "First key point."
+- "Processors are no longer getting much faster"
+- "Parallel computing uses multiple cores in one running program"
+- "Sequential Batch uses multiple cores for multiple running programs"
 ---
 
 ## What is Parallel Computing?

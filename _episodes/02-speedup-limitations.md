@@ -5,9 +5,15 @@ exercises: 0
 questions:
 - "How fast can I go?"
 objectives:
-- "First objective."
+- "Understand theoretical limits to parallel performance"
+- "Define speedup"
+- "Explain Amdahl's Law"
+- "Define linear speedup"
+- "Demonstrate superlinear speedup"
 keypoints:
-- "First key point."
+- "Speedup is the ratio of sequential runtime to parallel runtime"
+- "Linear speedup is `p` for `p` processors"
+- "Amdahl's Law calculates limit on speedup for partially parallel code"
 ---
 
 ## What is parallel speedup?

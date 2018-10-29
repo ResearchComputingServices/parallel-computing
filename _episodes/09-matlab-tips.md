@@ -5,9 +5,9 @@ exercises: 0
 questions:
 - "What guidelines are there for improving MATLAB code performance?"
 objectives:
-- "First objective."
+- "Review best practices for MATLAB performance beyond just writing parallel code."
 keypoints:
-- "First key point."
+- "Preallocating variables, moving constants out of loops, compilation, and memory access patterns are other MATLAB performance optimization techniques."
 ---
 
 ## Overview

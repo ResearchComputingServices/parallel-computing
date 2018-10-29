@@ -5,9 +5,11 @@ exercises: 0
 questions:
 - "How can I parallelize my existing code?"
 objectives:
-- "First objective."
+- "Describe a procedure for converting sequential code to parallel."
 keypoints:
-- "First key point."
+- "Identify candidate code sections for parallelization"
+- "Pay attention to random number generation in parallel"
+- "The best way to ensure parallel improves performance is to measure"
 ---
 
 ## Don't start yet! ##

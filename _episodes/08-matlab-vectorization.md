@@ -5,9 +5,14 @@ exercises: 0
 questions:
 - "How does vectorization work in MATLAB?"
 objectives:
-- "First objective."
+- "Understand MATLAB vectorized operations."
+- "Demonstrate MATLAB vectorization as an alternative form of parallelization."
+- "Explain the pros and cons of vectorization vs parfor."
 keypoints:
-- "First key point."
+- "Vectorized operations apply to an entire matrix or vector."
+- "MATLAB automatically runs some vectorized code in parallel."
+- "Vectorization can be easier and efficient in some cases."
+- "Vectorization may use too much memory for large problems, or not be possible for complex loops."
 ---
 
 

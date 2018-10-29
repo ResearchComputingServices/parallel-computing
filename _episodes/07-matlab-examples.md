@@ -5,9 +5,12 @@ exercises: 10
 questions:
 - "What kind of MATLAB code can be paralellized?"
 objectives:
-- "First objective."
+- "Illustrate differences between code that does and does not parallelize well."
+- "Practice parallelizing code."
 keypoints:
-- "First key point."
+- "Monte Carlo simulation is an example that obtain good speedup in parallel."
+- "Prefix Sum is an example that cannot be parallelized using parfor."
+- "Some code can be parallelized, but speedup may be greatly affected by communication overhead."
 ---
 
 ## Example MATLAB parfor

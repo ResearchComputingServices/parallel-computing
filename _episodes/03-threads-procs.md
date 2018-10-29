@@ -5,9 +5,12 @@ exercises: 0
 questions:
 - "How is parallelism implemented?"
 objectives:
-- "First objective."
+- "Understand the difference between processes and threads."
 keypoints:
-- "First key point."
+- "Threads share memory and reside in a process on the same computer."
+- "Processes do not share memory and can reside on the same or different computers."
+- "OpenMP is an example of multithreaded programming."
+- "MPI is an example of multiprocess programming."
 ---
 
 If a program is going to use multiple processor cores, then it needs to simultaneously do more than one "thing" at once.  There are two types of these "things", or what we may informally call workers - processes and threads.   In both cases, the computer's operating system is responsible for scheduling workers onto your hardware's processor cores.

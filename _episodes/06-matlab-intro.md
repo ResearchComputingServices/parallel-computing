@@ -5,9 +5,13 @@ exercises: 0
 questions:
 - "How can we write parallel programs in MATLAB?"
 objectives:
-- "First objective."
+- "Learn how to write MATLAB parallel loops."
+- "Identify the restrictions placed on MATLAB parallel loops."
 keypoints:
-- "First key point."
+- "MATLAB manages a parallel pool of processes."
+- "Variables in parallel loops must be independent."
+- "MATLAB classifies parallel loop variables to ensure independence."
+- "The `tic`/`toc` command can time sections of MATLAB code."
 ---
 
 ## Overview

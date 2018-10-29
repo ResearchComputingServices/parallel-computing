@@ -5,9 +5,13 @@ exercises: 0
 questions:
 - "What else slows me down?"
 objectives:
-- "First objective."
+- "Understand the affect the data sharing on performance."
+- "Explain how certain hardware components affect performance."
 keypoints:
-- "First key point."
+- "Communication to share data slows down parallel programs."
+- "Processor hardware caches affects performance."
+- "Transferring data between cores and RAM affects performance."
+- "Reading and writing files in parallel affects performace."
 ---
 
 ## Communication Overhead ##
