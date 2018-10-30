@@ -122,7 +122,7 @@ And when comparing the performance of the original montecarlo to the montecarlo_
 
 ## Column-Major Memory Access
 
-MATLAB stores matrices in column-major format.  This means an array such as:
+MATLAB stores matrices in column-major format.  This means a matrix such as the one below will be stored in RAM in this order: 1, 4, 7, 2, 5, 8, 3, 6, 9.
 
 ~~~
 ans =
@@ -133,8 +133,8 @@ ans =
 ~~~
 {: .source }
 
-will be stored in RAM in this order: 1, 4, 7, 2, 5, 8, 3, 6, 9.
+You may recall that items close to other recently accessed items are cached in the processor cores to speed up memory access.  So by accessing matrix elements by column for large matrices, you will use the fast cache more often.  On the other hand, if you access elements by row, you may need to wait for them to be fetched from RAM for each element.
 
-If you recall, items close to other recently accessed items are cached in the processor cores to speed up memory access.  So you should work with columns at a time to improve memory performance.
+So you should work with matrix data by column instead of by row to improve memory performance.
 
 For example, the code [code/imagefilter/processimage.m](../code/imagefilter/processimage.m) is faster than [code/imagefilter/processimage_rowmajor.m](../code/imagefilter/processimage_rowmajor.m).
