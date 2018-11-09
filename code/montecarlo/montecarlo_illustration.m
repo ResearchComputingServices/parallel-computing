@@ -3,6 +3,7 @@ N = 1E6;
 points = zeros(D);
 incircle = 0;
 fig = gcf;
+figure(gcf);                    % To show figure on Mac
 for ii = 1:N
     if mod(ii,5E3) == 0
         colormap([1 1 1; 1 0 0; 0 1 0; 0 0 1]);
