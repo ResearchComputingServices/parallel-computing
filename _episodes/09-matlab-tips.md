@@ -12,7 +12,7 @@ keypoints:
 
 ## Overview
 
-Emphasis in this workshop is on parallel computing.  Parallelism is great for using all your processor cores. With parallelism, you can speed up already "tuned" code to go beyond what you can do on your laptop.  The point of parallel computing is to improve your code's performance.  Because clock speed is not going up (i.e. CPU cores are not getting faster), we need to make efficient use of multicore hardware to achieve performance gains.
+The emphasis in this workshop is on parallel computing.  Parallelism is great for using all your processor cores. With parallelism, you can speed up already "tuned" code to go beyond what you can do on your laptop.  The point of parallel computing is to improve your code's performance.  Because clock speed is not going up (i.e. CPU cores are not getting faster), we need to make efficient use of multicore hardware to achieve performance gains.
 
 However, it is also worth noting tricks that can speed up your code before parallelizing.  This includes some tips from Mathworks to improve MATLAB code performance.  These techniques are preallocation, vectorization, parallelization, and loop constants.
 
