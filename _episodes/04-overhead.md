@@ -1,5 +1,5 @@
 ---
-title: "Hardware bottlenecks and overhead"
+title: "Bottlenecks and overhead"
 teaching: 10
 exercises: 0
 questions:
