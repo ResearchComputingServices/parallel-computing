@@ -44,7 +44,7 @@ Let's now look at an example where `parfor` parallelization runs more quickly th
 
 ![Monte Carlo Illustration](../fig/montecarlo_illustration.png)
 
-Vectorized code to perform this calculation is shown in this example: [code/montecarlo/solution/montecarlo_vectorized.m](../code/montecarlo/solution/montecarlo_vectorized.m)
+Vectorized code to perform this calculation is shown in this example: [code/montecarlo/montecarlo_vectorized.m](../code/montecarlo/montecarlo_vectorized.m)
 
 ~~~
 N = 2E8;

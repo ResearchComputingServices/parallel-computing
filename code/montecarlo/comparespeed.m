@@ -3,7 +3,10 @@
 % compare the relative speeds of the scripts.
 
 addpath '..';
-scripts = {'montecarlo', 'montecarlo_parallel', 'montecarlo_vectorized'};
+scripts = {'montecarlo' ...
+           ,'montecarlo_parallel' ...
+           %,'montecarlo_vectorized' ...
+          };
 
 % Number of timing repetitions for each script
 reps = 1;

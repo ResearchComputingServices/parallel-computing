@@ -1,3 +1,4 @@
+clear count;
 maxIterations = 1000;
 gridSize = 2000;
 xlim = [-0.744277119204761 -0.742029680722771];
