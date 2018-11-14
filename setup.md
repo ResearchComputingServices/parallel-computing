@@ -12,7 +12,5 @@ Although not required, it would be helpful to bring a laptop with MATLAB to try 
 
 ## Getting lesson materials
 
-You may download this workshop's MATLAB code examples here:
-
- - Download [parallel-matlab-code.zip]({{ page.root }}/data/parallel-matlab-code.zip)
-
+ - You may download this workshop's MATLAB code examples here: [parallel-matlab-code.zip]({{ page.root }}/data/parallel-matlab-code.zip)
+ - Presentation slides are available: [RCS_Workshop_III.pdf]({{page.root}}/data/RCS_Workshop_III.pdf)
